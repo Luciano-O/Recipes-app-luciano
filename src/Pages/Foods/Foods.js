@@ -12,40 +12,37 @@ const MAX_LENGTH_C = 5;
 function Foods() {
   // const [atualCategory, setAtualCategory] = useState();
   const [categories, setCategories] = useState();
-  const [isCategoryButtonActive, setIsCategoryButtonActive] = useState(false);
+  const [categoryButtonActive, setCategoryButtonActive] = useState(false);
   const { setSiteValue,
     siteValue,
     setApiValue,
     finalItems,
     setFinalItems,
-    first12,
     setFirst12,
   } = useContext(RecipesContext);
 
   const handleCategoryClick = async ({ target }) => {
-    const { meals } = await getRecipes(siteValue, 'filter', `c=${target.name}`);
-    setApiValue(meals);
-    setFinalItems(meals.slice(0, MAX_LENGTH));
-    setIsCategoryButtonActive(!isCategoryButtonActive);
+    if (categoryButtonActive !== target.name) {
+      const { meals } = await getRecipes(siteValue, 'filter', `c=${target.name}`);
+      setApiValue(meals);
+      setFinalItems(meals.slice(0, MAX_LENGTH));
+      setCategoryButtonActive(target.name);
+    } else {
+      const final = await getRecipes('meal', 'search', 's=');
+      setApiValue(final);
+      setFirst12(final?.meals?.slice(0, MAX_LENGTH));
+      setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
+      setCategoryButtonActive('');
+    }
   };
 
-  function showedItems() {
-    if (isCategoryButtonActive) {
-      setFinalItems(bringItens()?.meals?.slice(0, MAX_LENGTH_C));
-    } else {
-      setFinalItems(first12);
-    }
-  }
-
   useEffect(() => {
-    showedItems();
     setSiteValue('meal');
     const bringItens = async () => {
       const final = await getRecipes('meal', 'search', 's=');
       setApiValue(final);
       setFirst12(final?.meals?.slice(0, MAX_LENGTH));
       setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
-      return final;
     };
     const bringCategories = async () => {
       const final = await getRecipes('meal', 'list', 'c=list');
@@ -77,6 +74,7 @@ function Foods() {
         dataTest={ `${strCategory}-category-filter` }
         text={ strCategory }
       />)) }
+      <button type="button" data-testid="All-category-filter">All</button>
       {finalItems?.map(({ idMeal, strMealThumb, strMeal }, index) => (
         <Card
           index={ index }

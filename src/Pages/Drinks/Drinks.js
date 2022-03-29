@@ -12,45 +12,42 @@ const MAX_LENGTH_C = 5;
 function Drinks() {
   // const [ atualCategory, setAtualCategory] = useState();
   const [categories, setCategories] = useState();
-  const [isCategoryButtonActive, setIsCategoryButtonActive] = useState(false);
+  const [categoryButtonActive, setCategoryButtonActive] = useState(false);
   const { setSiteValue,
     siteValue,
     setApiValue,
     finalItems,
     setFinalItems,
-    first12,
     setFirst12,
   } = useContext(RecipesContext);
 
   const handleCategoryClick = async ({ target }) => {
-    const { drinks } = await getRecipes(siteValue, 'filter', `c=${target.name}`);
-    setApiValue(drinks);
-    setFinalItems(drinks?.slice(0, MAX_LENGTH));
-    setIsCategoryButtonActive(!isCategoryButtonActive);
+    if (categoryButtonActive !== target.name) {
+      const { drinks } = await getRecipes(siteValue, 'filter', `c=${target.name}`);
+      setApiValue(drinks);
+      setFinalItems(drinks?.slice(0, MAX_LENGTH));
+      setCategoryButtonActive(target.name);
+    } else {
+      const final = await getRecipes('cocktail', 'search', 's=');
+      setApiValue(final);
+      localStorage.setItem('first12', JSON.stringify(final.drinks.slice(0, MAX_LENGTH)));
+      setFirst12(final?.drinks?.slice(0, MAX_LENGTH));
+      setFinalItems(final?.drinks?.slice(0, MAX_LENGTH));
+      setCategoryButtonActive('');
+    }
   };
 
-  function showedItems() {
-    if (isCategoryButtonActive) {
-      setFinalItems(bringItens()?.drinks?.slice(0, MAX_LENGTH_C));
-    } else {
-      setFinalItems(first12);
-    }
-  }
-
   useEffect(() => {
-    showedItems();
     setSiteValue('cocktail');
     const bringItens = async () => {
       const final = await getRecipes('cocktail', 'search', 's=');
       setApiValue(final);
-      localStorage.setItem('first12', JSON.stringify(final.drinks.slice(0, MAX_LENGTH)));
       setFirst12(final?.drinks?.slice(0, MAX_LENGTH));
       setFinalItems(final?.drinks?.slice(0, MAX_LENGTH));
     };
     const bringCategories = async () => {
       const final = await getRecipes('cocktail', 'list', 'c=list');
       setCategories(final.drinks.slice(0, MAX_LENGTH_C));
-      console.log(final);
     };
     bringCategories();
     bringItens();
@@ -72,6 +69,7 @@ function Drinks() {
         }-category-filter` }
         text={ strCategory }
       />)) }
+      <button type="button" data-testid="All-category-filter">All</button>
       {finalItems?.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
         <Card
           key={ idDrink }
