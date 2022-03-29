@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../../Components/Header/Header';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
+import RecipesContext from '../../Context/RecipesContext';
 
 function Drinks() {
+  const { siteValue,
+    setSiteValue } = useContext(RecipesContext);
+
+  useEffect(() => {
+    setSiteValue('cocktail');
+  }, []);
+
   return (
     <div>
       <Header
