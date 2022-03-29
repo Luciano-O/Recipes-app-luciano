@@ -4,8 +4,7 @@ import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 import RecipesContext from '../../Context/RecipesContext';
 
 function Drinks() {
-  const { siteValue,
-    setSiteValue } = useContext(RecipesContext);
+  const { setSiteValue } = useContext(RecipesContext);
 
   useEffect(() => {
     setSiteValue('cocktail');
