@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../../Components/Header/Header';
+import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 
 function ExploreNationalities() {
   return (
     <div>
-      <h1>ExploreNationalities</h1>
+      <Header title="Explore Nationalities" />
+      <FooterMenu />
     </div>
   );
 }

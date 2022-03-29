@@ -3,8 +3,10 @@ import Card from '../../Components/Card/Card';
 import Button from '../../Components/Button/Button';
 import RecipesContext from '../../Context/RecipesContext';
 import fetchMealsDrinks from '../../Helpers/Fetchs';
+import Header from '../../Components/Header/Header';
+import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 
-function Food() {
+function Foods() {
   const [itens, setItens] = useState();
   const [finalItens, setFinalItens] = useState();
   const [atualCategory, setAtualCategory] = useState();
@@ -29,6 +31,9 @@ function Food() {
 
   return (
     <div>
+      <Header
+        title="Foods"
+      />
       <h1>{ type }</h1>
       {categories
       && categories.map(({ strCategory }) => (<Button
@@ -53,8 +58,9 @@ function Food() {
             str={ strDrinks }
           />
         )))}
+      <FooterMenu />
     </div>
   );
 }
 
-export default Food;
+export default Foods;
