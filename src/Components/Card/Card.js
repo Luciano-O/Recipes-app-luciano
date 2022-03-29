@@ -2,21 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Card(props) {
-  const { thumb, str } = props;
+  const { thumb, title, index } = props;
   return (
-    <div>
+    <div data-testid={ `${index}-recipe-card` }>
       <img
         src={ thumb }
-        alt={ str }
+        data-testid={ `${index}-card-img` }
+        alt={ title }
       />
-      <h3>{ str }</h3>
+      <h3 data-testid={ `${index}-card-name` }>{ title }</h3>
     </div>
   );
 }
 
 Card.propTypes = {
   thumb: PropTypes.string.isRequired,
-  str: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Card;
