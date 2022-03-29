@@ -18,7 +18,6 @@ function Login() {
         dataTest="teste"
         onClick={ () => teste }
       />
-
     </div>
   );
 }

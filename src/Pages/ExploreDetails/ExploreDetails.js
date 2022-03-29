@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Header from '../../Components/Header/Header';
+import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 
 function ExploreDetails({ match }) {
   const pageTitle = match.params.type;
@@ -10,6 +11,7 @@ function ExploreDetails({ match }) {
         title={ `Explore ${pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)}` }
         searchBtnExists
       />
+      <FooterMenu />
     </div>
   );
 }
