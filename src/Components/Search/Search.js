@@ -7,13 +7,15 @@ import getRecipes from '../../Helpers/API';
 const FIRST_LETTER = 'first-letter';
 
 function Search() {
+  const MAX_LENGTH = 12;
   const history = useHistory();
   const { radioValue,
     setRadioValue,
     setApiValue,
     siteValue,
     searchValue,
-    setSearchValue } = useContext(RecipesContext);
+    setSearchValue,
+    setFinalItems } = useContext(RecipesContext);
 
   const radios = [
     { name: 'Ingredient', dataTest: 'ingredient', value: 'ingredient' },
@@ -27,22 +29,25 @@ function Search() {
       const mealId = api?.meals[0]?.idMeal;
       setApiValue(api);
       history.push(`/foods/${mealId}`);
-    } else if (api?.drinks.length === 1) {
+    } else if (api?.drinks?.length === 1) {
       const drinkId = api?.drinks[0]?.idDrink;
       history.push(`/drinks/${drinkId}`);
     }
   }
 
   async function handleSearchClick() {
+    const currentSite = siteValue === 'meal' ? 'meals' : 'drinks';
     switch (radioValue) {
     case 'ingredient':
       { const apiIngredient = await getRecipes(siteValue, 'filter', `i=${searchValue}`);
         checkNumberOfItems(apiIngredient);
+        setFinalItems(apiIngredient[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiIngredient); }
       break;
     case 'name':
       { const apiName = await getRecipes(siteValue, 'search', `s=${searchValue}`);
         checkNumberOfItems(apiName);
+        setFinalItems(apiName[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiName); }
       break;
     case FIRST_LETTER:
@@ -51,6 +56,7 @@ function Search() {
       } else {
         const apiFirstLetter = await getRecipes(siteValue, 'search', `f=${searchValue}`);
         checkNumberOfItems(apiFirstLetter);
+        setFinalItems(apiFirstLetter[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiFirstLetter);
       }
       break;
@@ -91,7 +97,7 @@ function Search() {
       <Button
         variant="primary"
         data-testid="exec-search-btn"
-        onClick={ () => handleSearchClick() }
+        onClick={ () => handleSearchClick }
       >
         Search
       </Button>

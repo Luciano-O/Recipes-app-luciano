@@ -5,11 +5,14 @@ import RecipesContext from './RecipesContext';
 function RecipesProvider({ children }) {
   const [radioValue, setRadioValue] = useState('ingredient');
   const [apiValue, setApiValue] = useState({});
+  const [finalItems, setFinalItems] = useState();
   const [siteValue, setSiteValue] = useState('meal');
   const [searchValue, setSearchValue] = useState('');
 
   const objValue = {
     radioValue,
+    finalItems,
+    setFinalItems,
     setRadioValue,
     apiValue,
     setApiValue,

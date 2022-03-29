@@ -7,20 +7,22 @@ import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 import getRecipes from '../../Helpers/API';
 
 function Drinks() {
-  const MAX_LENGTH = 13;
-  const [finalItens, setFinalItens] = useState();
+  const MAX_LENGTH = 12;
   const [atualCategory, setAtualCategory] = useState();
   const [categories, setCategories] = useState();
-  const { setSiteValue, siteValue, setApiValue } = useContext(RecipesContext);
+  const { setSiteValue,
+     siteValue,
+     setApiValue,
+     finalItems,
+     setFinalItems,
+     } = useContext(RecipesContext);
 
-  useEffect(() => {
-    const attItens = async () => {
-      const { drinks } = await getRecipes('cocktail', 'filter', `c=${atualCategory}`);
+    const handleCategoryClick = async ({ target }) => {
+      const { drinks } = await getRecipes('cocktail', 'filter', `c=${target.name}`);
       setApiValue(drinks);
-      setFinalItens(drinks.slice(0, MAX_LENGTH));
+      setAtualCategory(target.name)
+      setFinalItems(drinks.slice(0, MAX_LENGTH));
     };
-    attItens();
-  }, [atualCategory, setApiValue]);
 
   useEffect(() => {
     setSiteValue('cocktail');
@@ -28,10 +30,10 @@ function Drinks() {
       const final = await getRecipes('cocktail', 'search', 's=');
       console.log(final);
       setApiValue(final);
-      setFinalItens(final.drinks.slice(0, MAX_LENGTH));
+      setFinalItems(final.drinks.slice(0, MAX_LENGTH));
     };
     const bringCategories = async () => {
-      const MAX_LENGTH_C = 6;
+      const MAX_LENGTH_C = 5;
       const final = await getRecipes('cocktail', 'list', 'c=list');
       setCategories(final.drinks.slice(0, MAX_LENGTH_C));
       console.log(final);
@@ -46,16 +48,15 @@ function Drinks() {
         title="Drinks"
       />
       <h1>{ siteValue }</h1>
-      {categories
-      && categories.map(({ strCategory }) => (<Button
+      {categories?.map(({ strCategory }) => (<Button
         key={ strCategory }
         className="0"
         name={ strCategory }
-        onClick={ ({ target }) => setAtualCategory(target.name) }
-        dataTestId={ `${strCategory}-category-filter` }
+        onClick={ handleCategoryClick }
+        dataTest={ `${strCategory}-category-filter` }
         text={ strCategory }
       />)) }
-      { finalItens && finalItens.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
+      {finalItems?.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
         <Card
           key={ idDrink }
           thumb={ strDrinkThumb }
