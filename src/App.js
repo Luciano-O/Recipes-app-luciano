@@ -3,8 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Pages/Login/Login';
-import Food from './Pages/Food/Food';
-import Drink from './Pages/Drink/Drink';
+import Foods from './Pages/Foods/Foods';
+import Drinks from './Pages/Drinks/Drinks';
 import RecipeDetails from './Pages/RecipeDetails/RecipeDetails';
 import RecipeProgress from './Pages/RecipeProgress/RecipeProgress';
 import Explore from './Pages/Explore/Explore';
@@ -19,17 +19,25 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/food" component={ Food } />
-      <Route path="/drink" component={ Drink } />
-      <Route path="/:type/:id-da-receita" component={ RecipeDetails } />
-      <Route path="/:type/:id-da-receita/in-progress" component={ RecipeProgress } />
-      <Route path="/explore" component={ Explore } />
-      <Route path="/explore/:type" component={ ExploreDetails } />
-      <Route path="/explore/:type/ingredients" component={ ExploreIngredients } />
-      <Route path="/explore/foods/nationalities" component={ ExploreNationalities } />
-      <Route path="/profile" component={ Profile } />
-      <Route path=" /done-recipes" component={ DoneRecipes } />
-      <Route path=" /favorite-recipes" component={ FavoriteRecipes } />
+      <Route exact path="/foods" component={ Foods } />
+      <Route exact path="/drinks" component={ Drinks } />
+      <Route exact path="/:type/:id-da-receita" component={ RecipeDetails } />
+      <Route
+        exact
+        path="/:type/:id-da-receita/in-progress"
+        component={ RecipeProgress }
+      />
+      <Route exact path="/explore" component={ Explore } />
+      <Route exact path="/explore/:type" component={ ExploreDetails } />
+      <Route exact path="/explore/:type/ingredients" component={ ExploreIngredients } />
+      <Route
+        exact
+        path="/explore/foods/nationalities"
+        component={ ExploreNationalities }
+      />
+      <Route exact path="/profile" component={ Profile } />
+      <Route exact path="/done-recipes" component={ DoneRecipes } />
+      <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
       {/* <Route path="*" component={ NotFound } /> */}
     </Switch>
   );
