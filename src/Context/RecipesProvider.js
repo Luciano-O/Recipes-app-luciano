@@ -8,6 +8,7 @@ function RecipesProvider({ children }) {
   const [finalItems, setFinalItems] = useState();
   const [siteValue, setSiteValue] = useState('meal');
   const [searchValue, setSearchValue] = useState('');
+  const [first12, setFirst12] = useState([]);
 
   const objValue = {
     radioValue,
@@ -20,6 +21,8 @@ function RecipesProvider({ children }) {
     setSiteValue,
     searchValue,
     setSearchValue,
+    first12,
+    setFirst12,
   };
 
   return (
