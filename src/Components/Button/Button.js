@@ -9,7 +9,7 @@ function Button(props) {
       name={ name }
       data-testid={ dataTestId }
       className={ className }
-      onClick={ onClick() }
+      onClick={ onClick }
     >
       {text}
     </button>
