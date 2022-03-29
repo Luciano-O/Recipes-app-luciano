@@ -1,14 +1,14 @@
 import React from 'react';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 
-function ExploreDetails() {
+function Drinks() {
   return (
     <div>
-      <h1>ExploreDetails</h1>
+      <h1>Drink</h1>
 
       <FooterMenu />
     </div>
   );
 }
 
-export default ExploreDetails;
+export default Drinks;
