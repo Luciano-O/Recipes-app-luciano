@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '../../Components/Button/Button';
+import RecipesContext from '../../Context/RecipesContext';
+import getRecipes from '../../Helpers/API';
 
 function Login() {
-  function teste({ target }) {
-    console.log(target);
+  const { siteValue } = useContext(RecipesContext);
+  async function teste() {
+    console.log(await getRecipes(siteValue, 'filter', 'i=chicken'));
   }
   return (
     <div>
