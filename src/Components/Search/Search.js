@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { ButtonGroup, ToggleButton, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../Context/RecipesContext';
 import getRecipes from '../../Helpers/API';
 
 const FIRST_LETTER = 'first-letter';
 
 function Search() {
+  const history = useHistory();
   const { radioValue,
     setRadioValue,
     setApiValue,
@@ -19,18 +21,38 @@ function Search() {
     { name: 'First-Letter', dataTest: FIRST_LETTER, value: FIRST_LETTER },
   ];
 
+  function checkNumberOfItems(api) {
+    if (api?.meals?.length === 1) {
+      console.log('entrou no if');
+      const mealId = api?.meals[0]?.idMeal;
+      setApiValue(api);
+      history.push(`/foods/${mealId}`);
+    } else if (api?.drinks.length === 1) {
+      const drinkId = api?.drinks[0]?.idDrink;
+      history.push(`/drinks/${drinkId}`);
+    }
+  }
+
   async function handleSearchClick() {
     switch (radioValue) {
     case 'ingredient':
-      setApiValue(await getRecipes(siteValue, 'filter', `i=${searchValue}`));
+      { const apiIngredient = await getRecipes(siteValue, 'filter', `i=${searchValue}`);
+        checkNumberOfItems(apiIngredient);
+        setApiValue(apiIngredient); }
       break;
     case 'name':
-      setApiValue(await getRecipes(siteValue, 'search', `s=${searchValue}`));
+      { const apiName = await getRecipes(siteValue, 'search', `s=${searchValue}`);
+        checkNumberOfItems(apiName);
+        setApiValue(apiName); }
       break;
     case FIRST_LETTER:
       if (searchValue.length !== 1) {
         global.alert('Your search must have only 1 (one) character');
-      } else { setApiValue(await getRecipes(siteValue, 'search', `f=${searchValue}`)); }
+      } else {
+        const apiFirstLetter = await getRecipes(siteValue, 'search', `f=${searchValue}`);
+        checkNumberOfItems(apiFirstLetter);
+        setApiValue(apiFirstLetter);
+      }
       break;
     default:
       break;

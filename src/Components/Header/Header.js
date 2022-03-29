@@ -56,11 +56,13 @@ function Header(props) {
     </>
   );
 }
+Header.defaultProps = {
+  searchBtnExists: false,
+};
 
 Header.propTypes = {
-  searchBtnExists: PropTypes.bool.isRequired,
+  searchBtnExists: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  props: PropTypes.shape({}).isRequired,
 };
 
 export default Header;
