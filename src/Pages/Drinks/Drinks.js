@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Card from '../../Components/Card/Card';
 import Button from '../../Components/Button/Button';
 import RecipesContext from '../../Context/RecipesContext';
@@ -37,6 +38,15 @@ function Drinks() {
     }
   };
 
+  const handleAllCategoryClick = async () => {
+    const final = await getRecipes('cocktail', 'search', 's=');
+    setApiValue(final);
+    localStorage.setItem('first12', JSON.stringify(final.drinks.slice(0, MAX_LENGTH)));
+    setFirst12(final?.drinks?.slice(0, MAX_LENGTH));
+    setFinalItems(final?.drinks?.slice(0, MAX_LENGTH));
+    setCategoryButtonActive('');
+  };
+
   useEffect(() => {
     setSiteValue('cocktail');
     const bringItens = async () => {
@@ -69,14 +79,21 @@ function Drinks() {
         }-category-filter` }
         text={ strCategory }
       />)) }
-      <button type="button" data-testid="All-category-filter">All</button>
+      <Button
+        dataTest="All-category-filter"
+        onClick={ handleAllCategoryClick }
+        name="all-category-btn"
+        className="0"
+        text="All"
+      />
       {finalItems?.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
-        <Card
-          key={ idDrink }
-          thumb={ strDrinkThumb }
-          title={ strDrink }
-          index={ index }
-        />
+        <Link to={`/drinks/${idDrink}`} key={ idDrink }>
+          <Card
+            thumb={ strDrinkThumb }
+            title={ strDrink }
+            index={ index }
+          />
+        </Link>
       ))}
       <FooterMenu />
     </div>

@@ -5,6 +5,7 @@ import RecipesContext from '../../Context/RecipesContext';
 import getRecipes from '../../Helpers/API';
 
 const FIRST_LETTER = 'first-letter';
+const ALERT_MESSAGE = 'Sorry, we haven\'t found any recipes for these filters.';
 
 function Search() {
   const MAX_LENGTH = 12;
@@ -40,12 +41,18 @@ function Search() {
     switch (radioValue) {
     case 'ingredient':
       { const apiIngredient = await getRecipes(siteValue, 'filter', `i=${searchValue}`);
+        if (!apiIngredient[currentSite]) {
+          global.alert(ALERT_MESSAGE);
+        }
         checkNumberOfItems(apiIngredient);
         setFinalItems(apiIngredient[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiIngredient); }
       break;
     case 'name':
       { const apiName = await getRecipes(siteValue, 'search', `s=${searchValue}`);
+        if (!apiName[currentSite]) {
+          global.alert(ALERT_MESSAGE);
+        }
         checkNumberOfItems(apiName);
         setFinalItems(apiName[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiName); }
@@ -55,6 +62,9 @@ function Search() {
         global.alert('Your search must have only 1 (one) character');
       } else {
         const apiFirstLetter = await getRecipes(siteValue, 'search', `f=${searchValue}`);
+        if (!apiFirstLetter[currentSite]) {
+          global.alert(ALERT_MESSAGE);
+        }
         checkNumberOfItems(apiFirstLetter);
         setFinalItems(apiFirstLetter[currentSite]?.slice(0, MAX_LENGTH));
         setApiValue(apiFirstLetter);
@@ -97,7 +107,7 @@ function Search() {
       <Button
         variant="primary"
         data-testid="exec-search-btn"
-        onClick={ () => handleSearchClick }
+        onClick={ () => handleSearchClick() }
       >
         Search
       </Button>

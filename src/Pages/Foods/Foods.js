@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Card from '../../Components/Card/Card';
 import Button from '../../Components/Button/Button';
 import RecipesContext from '../../Context/RecipesContext';
@@ -34,6 +35,14 @@ function Foods() {
       setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
       setCategoryButtonActive('');
     }
+  };
+
+  const handleAllCategoryClick = async () => {
+    const final = await getRecipes('meal', 'search', 's=');
+    setApiValue(final);
+    setFirst12(final?.meals?.slice(0, MAX_LENGTH));
+    setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
+    setCategoryButtonActive('');
   };
 
   useEffect(() => {
@@ -74,14 +83,21 @@ function Foods() {
         dataTest={ `${strCategory}-category-filter` }
         text={ strCategory }
       />)) }
-      <button type="button" data-testid="All-category-filter">All</button>
+      <Button
+        dataTest="All-category-filter"
+        onClick={ handleAllCategoryClick }
+        name="all-category-btn"
+        className="0"
+        text="All"
+      />
       {finalItems?.map(({ idMeal, strMealThumb, strMeal }, index) => (
-        <Card
-          index={ index }
-          key={ idMeal }
-          thumb={ strMealThumb }
-          title={ strMeal }
-        />
+        <Link to={`/foods/${idMeal}`} key={ idMeal }>
+          <Card
+            index={ index }
+            thumb={ strMealThumb }
+            title={ strMeal }
+          />
+        </Link>
       ))}
       <FooterMenu />
     </div>
