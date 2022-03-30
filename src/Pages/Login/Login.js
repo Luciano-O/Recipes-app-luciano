@@ -40,12 +40,14 @@ function Login(props) {
         value={ email }
         onChange={ ({ target }) => setEmail(target.value) }
         type="email"
+        placeholder="Email"
       />
       <input
         data-testid="password-input"
         value={ password }
         onChange={ ({ target }) => setPassword(target.value) }
         type="password"
+        placeholder="Senha"
       />
       <Button
         className="styles.testButton"
