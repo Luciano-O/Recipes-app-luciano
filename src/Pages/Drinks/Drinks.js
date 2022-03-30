@@ -86,8 +86,8 @@ function Drinks() {
         className="0"
         text="All"
       />
-      {finalItems?.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
-        <Link to={`/drinks/${idDrink}`} key={ idDrink }>
+      {finalItems && finalItems.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
+        <Link to={ `/drinks/${idDrink}` } key={ idDrink }>
           <Card
             thumb={ strDrinkThumb }
             title={ strDrink }
