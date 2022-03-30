@@ -89,9 +89,11 @@ function Drinks() {
       {finalItems && finalItems.map(({ idDrink, strDrinkThumb, strDrink }, index) => (
         <Link to={ `/drinks/${idDrink}` } key={ idDrink }>
           <Card
+            datatestRecipeCard={ `${index}-recipe-card` }
+            datatestCardImage={ `${index}-card-img` }
+            datatestCardName={ `${index}-card-name` }
             thumb={ strDrinkThumb }
             title={ strDrink }
-            index={ index }
           />
         </Link>
       ))}
