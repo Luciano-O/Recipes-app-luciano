@@ -10,6 +10,7 @@ function Explore() {
   function handleClick(type) {
     history.push(`/explore/${type}`);
   }
+
   return (
     <div>
       <Header title="Explore" searchBtnExists />
