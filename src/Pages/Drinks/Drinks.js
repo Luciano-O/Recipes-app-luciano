@@ -63,6 +63,8 @@ function Drinks() {
     bringItens();
   }, []);
 
+  console.log(finalItems);
+
   return (
     <div>
       <Header
