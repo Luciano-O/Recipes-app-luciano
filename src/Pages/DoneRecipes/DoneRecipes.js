@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../../Components/Header/Header';
 
 function DoneRecipes() {
   return (
     <div>
-      <h1>DoneRecipes</h1>
+      <Header title="Done Recipes" searchBtnExists />
     </div>
   );
 }
