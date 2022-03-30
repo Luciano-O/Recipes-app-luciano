@@ -11,7 +11,6 @@ const MAX_LENGTH = 12;
 const MAX_LENGTH_C = 5;
 
 function Drinks() {
-  // const [ atualCategory, setAtualCategory] = useState();
   const [categories, setCategories] = useState();
   const [categoryButtonActive, setCategoryButtonActive] = useState(false);
   const { setSiteValue,
