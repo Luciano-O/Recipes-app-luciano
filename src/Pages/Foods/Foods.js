@@ -90,8 +90,8 @@ function Foods() {
         className="0"
         text="All"
       />
-      {finalItems?.map(({ idMeal, strMealThumb, strMeal }, index) => (
-        <Link to={`/foods/${idMeal}`} key={ idMeal }>
+      {finalItems && finalItems.map(({ idMeal, strMealThumb, strMeal }, index) => (
+        <Link to={ `/foods/${idMeal}` } key={ idMeal }>
           <Card
             index={ index }
             thumb={ strMealThumb }
