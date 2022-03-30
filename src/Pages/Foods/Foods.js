@@ -93,7 +93,9 @@ function Foods() {
       {finalItems && finalItems.map(({ idMeal, strMealThumb, strMeal }, index) => (
         <Link to={ `/foods/${idMeal}` } key={ idMeal }>
           <Card
-            index={ index }
+            datatestRecipeCard={ `${index}-recipe-card` }
+            datatestCardImage={ `${index}-card-img` }
+            datatestCardName={ `${index}-card-name` }
             thumb={ strMealThumb }
             title={ strMeal }
           />
