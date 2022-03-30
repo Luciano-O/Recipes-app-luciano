@@ -1,4 +1,52 @@
-img {
-  height: 100px;
-  width: 100px;
+/* este estilo aplica-se a partir de 360px */
+* {
+  padding: 0;
+}
+
+/* este estilo aplica-se ate 360px */
+
+@media ( max-width : 360px ) {
+
+  .RecipeHeader img {
+    height: 360px;
+    width: 100%;
+  }
+
+  .RecomendationDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .RecomendationCards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Card {
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 40px;
+  }
+
+  .Card div {
+    height: 240px;
+    width: 180px;
+  }
+
+  .Card div img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .StartRecipeButton {
+    align-items: center;
+    align-self: center;
+    bottom: 0;
+    display: flex;
+    font-size: 30px;
+    height: 40px;
+    justify-content: center;
+    position: fixed;
+    width: 210px;
+  }
 }

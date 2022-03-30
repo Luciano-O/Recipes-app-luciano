@@ -111,7 +111,7 @@ function RecipeDetails({ match }) {
     <div>
       {recipe.map((element, index) => (
         <div key={ index }>
-          <div>
+          <div className={ styles.RecipeHeader }>
             <img
               data-testid="recipe-photo"
               src={ element[`str${type}Thumb`] }
@@ -140,12 +140,12 @@ function RecipeDetails({ match }) {
             <h1>Instructions</h1>
             <div data-testid="instructions">{element.strInstructions}</div>
           </div>
-          <div>
+          <div className={ styles.RecomendationDiv }>
             <h1>Video</h1>
             {pageType === 'foods' ? videoDiv : null}
-            <div>
+            <div className={ styles.RecomendationCards }>
               <h1>Recommended</h1>
-              {cardRecomendatioConstructor()}
+              <div className={ styles.Card }>{cardRecomendatioConstructor()}</div>
             </div>
             <Button
               className={ styles.StartRecipeButton }
