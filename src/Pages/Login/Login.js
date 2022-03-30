@@ -1,25 +1,69 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../Components/Button/Button';
-import RecipesContext from '../../Context/RecipesContext';
-import getRecipes from '../../Helpers/API';
+import { saveEmail,
+  saveTokenDrink,
+  saveTokenFood } from '../../Helpers/localStorageSaves';
 
-function Login() {
-  const { siteValue } = useContext(RecipesContext);
-  async function teste() {
-    console.log(await getRecipes(siteValue, 'filter', 'i=chicken'));
-  }
+function Login(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [disabled, setDisabled] = useState(true);
+  const { history } = props;
+
+  useEffect(() => {
+    const checkDisbale = () => {
+      const limitEmail = -1;
+      const limitPassword = 7;
+      const checkEmail = email === ''
+      || email.indexOf('@') === limitEmail
+      || email.indexOf('.') === limitEmail
+      || email.indexOf('.') === email.length - 1;
+      if (checkEmail || password.length < limitPassword) {
+        setDisabled(true);
+      } else { setDisabled(false); }
+    };
+    checkDisbale();
+  }, [email, password]);
+
+  const handleClick = () => {
+    saveTokenDrink();
+    saveTokenFood();
+    saveEmail(email);
+    history.push('/foods');
+  };
+
   return (
-    <div>
-      <h1>testes</h1>
+    <form>
+      <input
+        data-testid="email-input"
+        value={ email }
+        onChange={ ({ target }) => setEmail(target.value) }
+        type="email"
+      />
+      <input
+        data-testid="password-input"
+        value={ password }
+        onChange={ ({ target }) => setPassword(target.value) }
+        type="password"
+      />
       <Button
         className="styles.testButton"
-        text="teste"
+        text="Enter"
         name="lalaland"
-        dataTest="teste"
-        onClick={ () => teste }
+        disabled={ disabled }
+        dataTest="login-submit-btn"
+        onClick={ handleClick }
       />
-    </div>
+
+    </form>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;
