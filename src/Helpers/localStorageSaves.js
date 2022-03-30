@@ -1,3 +1,5 @@
+localStorage.setItem('user', JSON.stringify({ email: 'teste@trybe.com' }));
+
 export const saveTokenFood = () => {
   localStorage.setItem('mealsToken', 1);
 };
