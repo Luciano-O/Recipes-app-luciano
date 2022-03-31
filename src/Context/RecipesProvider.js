@@ -9,6 +9,8 @@ function RecipesProvider({ children }) {
   const [siteValue, setSiteValue] = useState('meal');
   const [searchValue, setSearchValue] = useState('');
   const [first12, setFirst12] = useState([]);
+  const [ingredientsApi, setIngredientsApi] = useState({});
+  const [recipesByIngridients, setRecipesByIngridients] = useState('');
 
   const objValue = {
     radioValue,
@@ -23,6 +25,10 @@ function RecipesProvider({ children }) {
     setSearchValue,
     first12,
     setFirst12,
+    ingredientsApi,
+    setIngredientsApi,
+    recipesByIngridients,
+    setRecipesByIngridients,
   };
 
   return (
