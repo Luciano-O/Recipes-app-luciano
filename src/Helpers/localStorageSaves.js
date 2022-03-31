@@ -1,18 +1,29 @@
 const DONE_RECIPE = 'done';
 const IN_PROGRES_RECIPE = 'inProgressRecipes';
 
-localStorage.setItem('user', JSON.stringify({ email: 'teste@trybe.com' }));
-
+// Save tokens
 export const saveTokenDrink = () => {
   localStorage.setItem('cocktailsToken', 1);
 };
 
+export const saveTokenFood = () => {
+  localStorage.setItem('mealsToken', 1);
+};
+//
+
+// Email
+export const getEmail = () => JSON.parse(localStorage.getItem('user'));
+
+if (!getEmail) {
+  localStorage.setItem('user', JSON.stringify({ email: 'teste@trybe.com' }));
+}
+
 export const saveEmail = (email) => {
   localStorage.setItem('user', JSON.stringify({ email }));
 };
+//
 
-export const getEmail = () => JSON.parse(localStorage.getItem('user'));
-
+// Done Recipes
 export const readDoneRecipes = () => JSON.parse(localStorage.getItem(DONE_RECIPE));
 
 const saveDoneRecipes = (done) => localStorage
@@ -24,77 +35,35 @@ export const addDoneRecipe = (doneRecipe) => {
     saveDoneRecipes([...doneRecipe, done]);
   }
 };
+//
 
-// [{
-//   id: id-da-receita,
-//   type: comida-ou-bebida,
-//   nationality: nacionalidade-da-receita-ou-texto-vazio,
-//   category: categoria-da-receita-ou-texto-vazio,
-//   alcoholicOrNot: alcoholic-ou-non-alcoholic-ou-texto-vazio,
-//   name: nome-da-receita,
-//   image: imagem-da-receita,
-//   doneDate: quando-a-receita-foi-concluida,
-//   tags: array-de-tags-da-receita-ou-array-vazio
-// }]
+// Favorite button
+export const getFavorites = () => JSON.parse(localStorage.getItem('favoriteRecipes'));
 
-// function saveDoneRecipeInLocalStorage(recipeArr) {
-//   if (type === 'Meal') {
-//     const { idMeal: id, strArea: nationality, strCategory: category,
-//       strMeal: name, strMealThumb: image, strTags: tags } = recipeArr;
-//     const lsObj = {
-//       id,
-//       type: 'food',
-//       nationality,
-//       category,
-//       alcoholicOrNot: '',
-//       name,
-//       image,
-//       doneDate: '',
-//       tags: tags || '' };
-//     console.log(lsObj);
-//     // addDoneRecipe(lsObj);
-//   } else {
-//     // console.log(recipeArr);
-//   }
-// }
+export const saveFavoriteRecipe = (id) => {
+  const atualArr = getFavorites();
+  const finalArr = atualArr.concat(id);
+  localStorage.setItem('favoriteRecipes', JSON.stringify(finalArr));
+};
 
-// function handleDoneButton(recipeArr) {
-//   saveDoneRecipeInLocalStorage(recipeArr);
-// }
+export const removeFavoriteRecipe = (recipe) => {
+  const arr = getFavorites();
+  const finalArr = arr.filter((item) => item.name !== recipe.name);
+  localStorage.setItem('favoriteRecipes', JSON.stringify(finalArr));
+};
+//
 
-export const readInProgressRecipes = () => JSON.parse(
-  localStorage.getItem(IN_PROGRES_RECIPE),
-);
+export const getProgress = () => JSON.parse(localStorage.getItem(IN_PROGRES_RECIPE));
 
-if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-  localStorage.setItem('inProgressRecipes', JSON.stringify({
+if (!getProgress()) {
+  localStorage.setItem(IN_PROGRES_RECIPE, JSON.stringify({
     cocktails: {},
     meals: {},
   }));
 }
 
-const saveInProgressRecipes = (inProgressRecipe) => localStorage
-  .setItem(IN_PROGRES_RECIPE, JSON.stringify(inProgressRecipe));
-
-export const addInProgressRecipe = (inProgressRecipeRecipe) => {
-  if (inProgressRecipeRecipe) {
-    const inProgress = readInProgressRecipes() || {};
-    saveInProgressRecipes([...inProgressRecipeRecipe, inProgress]);
-  }
-};
-
-export const saveTokenFood = () => {
-  localStorage.setItem('mealsToken', 1);
-};
-
-export const getProgress = () => JSON.parse(localStorage.getItem('inProgressRecipes'));
-
-if (!getProgress()) {
-  localStorage.setItem('inProgressRecipes', JSON.stringify({}));
-}
-
-export const saveInProgressRecipe = (name, arr) => {
+export const saveInProgressRecipe = (type, id, arr) => {
   const atualObj = getProgress();
-  atualObj[name] = arr;
-  localStorage.setItem('inProgressRecipes', JSON.stringify(atualObj));
+  atualObj[type] = { ...atualObj[type], [id]: arr };
+  localStorage.setItem(IN_PROGRES_RECIPE, JSON.stringify(atualObj));
 };

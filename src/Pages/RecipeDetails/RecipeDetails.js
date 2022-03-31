@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import clipboardCopy from 'clipboard-copy';
 import Button from '../../Components/Button/Button';
 import styles from './styles.module.css';
 // import { addInProgressRecipe } from '../../Helpers/localStorageSaves';
@@ -11,6 +10,8 @@ import { cardRecomendatioConstructor,
   fetchApi,
   getRecommendations } from '../../Helpers/RecipeDetailsFunctions';
 import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
+import { getProgress, saveInProgressRecipe } from '../../Helpers/localStorageSaves';
+import ShareButton from '../../Components/ShareButton/ShareButton';
 
 function RecipeDetails({ match }) {
   const pagePath = match.params;
@@ -18,9 +19,9 @@ function RecipeDetails({ match }) {
   const [ingredients, setIngredients] = useState([]);
   const [measure, setMeasure] = useState([]);
   const [recommended, setRecommended] = useState([]);
-  const { type: pageType } = pagePath;
+  const [showStart, setShowStart] = useState(true);
+  const { type: pageType, id: pageId } = pagePath;
   const history = useHistory();
-  const copy = clipboardCopy;
   let type;
   if (pageType === 'foods') {
     type = 'Meal';
@@ -30,20 +31,23 @@ function RecipeDetails({ match }) {
 
   useEffect(() => {
     fetchApi(setRecipe, setIngredients, setMeasure, pagePath);
+    const lsProgress = getProgress();
     getRecommendations(pagePath, setRecommended);
+    if (type === 'Meal' && lsProgress.meals[pageId]) {
+      setShowStart(false);
+    } if (type === 'Drink' && lsProgress.cocktails[pageId]) {
+      setShowStart(false);
+    }
   }, []);
 
   function handleStartButton(id) {
     if (type === 'Meal') {
+      saveInProgressRecipe('meals', id, []);
       history.push(`/foods/${id}/in-progress`);
     } else {
+      saveInProgressRecipe('cocktails', id, []);
       history.push(`/drinks/${id}/in-progress`);
     }
-  }
-
-  function handleShareClick() {
-    copy(window.location.href);
-    global.alert('"Link copied!"');
   }
 
   return (
@@ -67,12 +71,7 @@ function RecipeDetails({ match }) {
                 name={ recipe[0][`str${type}`] }
                 image={ recipe[0][`str${type}Thumb`] }
               />
-              <button onClick={ handleShareClick } data-testid="share-btn" type="button">
-                <img src="../../images/shareIcon.svg" alt="share" />
-              </button>
-              <button data-testid="favorite-btn" type="button">
-                <img src="../../images/whiteHeartIcon.svg" alt="favorite" />
-              </button>
+              <ShareButton recipeLink={ `http://localhost:3000/${type === 'Meal' ? 'foods' : 'drinks'}/${pageId}` } />
             </div>
             <h3
               data-testid="recipe-category"
@@ -100,7 +99,7 @@ function RecipeDetails({ match }) {
             </div>
             <Button
               className={ styles.StartRecipeButton }
-              text="Start Recipe"
+              text={ showStart ? 'Start Recipe' : 'Continue Recipe' }
               name="start-recipe"
               dataTest="start-recipe-btn"
               onClick={ () => handleStartButton(element[`id${type}`]) }

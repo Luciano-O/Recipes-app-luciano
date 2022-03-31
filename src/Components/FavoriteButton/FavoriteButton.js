@@ -25,7 +25,7 @@ function FavoriteButton(props) {
 
   useEffect(() => {
     const setFav1 = () => {
-      const isFave = getFavorites().some((item) => item.id === id);
+      const isFave = getFavorites()?.some((item) => item.id === id);
       if (isFave) {
         setFav(true);
       }
@@ -75,11 +75,15 @@ function FavoriteButton(props) {
   );
 }
 
+FavoriteButton.defaultProps = {
+  nationality: '',
+};
+
 FavoriteButton.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  nationality: PropTypes.string.isRequired,
+  nationality: PropTypes.string,
   category: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
