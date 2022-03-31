@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
-import Card from '../../Components/Card/Card';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import clipboardCopy from 'clipboard-copy';
 import Button from '../../Components/Button/Button';
 import styles from './styles.module.css';
-import getRecipes from '../../Helpers/API';
-import RecipesContext from '../../Context/RecipesContext';
+// import getRecipes from '../../Helpers/API';
+import { cardRecomendatioConstructor,
+  ingredientDivConstructor,
+  videoDivConstructor,
+  fetchApi,
+  getRecommendations } from '../../Helpers/RecipeDetailsFunctions';
 import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
 
-const MAX_LENGTH = 6;
+// import { addInProgressRecipe } from '../../Helpers/localStorageSaves';
 
 function RecipeDetails({ match }) {
   const pagePath = match.params;
@@ -15,7 +20,9 @@ function RecipeDetails({ match }) {
   const [ingredients, setIngredients] = useState([]);
   const [measure, setMeasure] = useState([]);
   const [recommended, setRecommended] = useState([]);
-  const { type: pageType, id: pageId } = pagePath;
+  const { type: pageType } = pagePath;
+  const history = useHistory();
+  const copy = clipboardCopy;
   let type;
   if (pageType === 'foods') {
     type = 'Meal';
@@ -23,91 +30,31 @@ function RecipeDetails({ match }) {
     type = 'Drink';
   }
 
-  const { setSiteValue } = useContext(RecipesContext);
-
-  function ingredientsAndMeasure(keyType, text) {
-    return (Object.entries(keyType[0]).filter(
-      ([key, value]) => key.includes(text) && value,
-    ));
+  if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+    localStorage.setItem('inProgressRecipes', JSON.stringify({
+      cocktails: {},
+      meals: {},
+    }));
   }
 
   useEffect(() => {
-    async function fetchApi() {
-      if (pageType === 'foods') {
-        const { meals } = await getRecipes('meal', 'lookup', `i=${pageId}`);
-        setRecipe(meals);
-        setIngredients(ingredientsAndMeasure(meals, 'strIngredient'));
-        setMeasure(ingredientsAndMeasure(meals, 'strMeasure'));
-        setSiteValue('meal');
-        const { drinks: recommendedDrinks } = await
-        getRecipes('cocktail', 'search', 's=');
-        setRecommended(recommendedDrinks?.slice(0, MAX_LENGTH));
-      } else if (pageType === 'drinks') {
-        const { drinks } = await getRecipes('cocktail', 'lookup', `i=${pageId}`);
-        setRecipe(drinks);
-        setIngredients(ingredientsAndMeasure(drinks, 'strIngredient'));
-        setMeasure(ingredientsAndMeasure(drinks, 'strMeasure'));
-        setSiteValue('cocktail');
-        const { meals: recommendedDrinks } = await
-        getRecipes('meal', 'search', 's=');
-        setRecommended(recommendedDrinks?.slice(0, MAX_LENGTH));
-      } return recipe;
-    }
-    fetchApi();
+    fetchApi(setRecipe, setIngredients, setMeasure, pagePath);
+    getRecommendations(pagePath, setRecommended);
   }, []);
 
-  const videoDiv = (
-    <video
-      controls
-      src="/media/cc0-videos/friday.mp4"
-    >
-      <track
-        default
-        kind="captions"
-        srcLang="en"
-        src="/media/examples/friday.vtt"
-        data-testid="video"
-      />
-      Sorry, your browser doesnt support embedded videos.
-    </video>
-  );
-
-  const ingredientDiv = ingredients.map(([key, value], i) => (
-    <div key={ key }>
-      <p
-        data-testid={ `${i}-ingredient-name-and-measure` }
-      >
-        {`${value} ${measure[i] && measure[i][1]}`}
-      </p>
-    </div>
-  ));
-
-  function cardRecomendatioConstructor() {
-    let recomendations;
+  function handleStartButton(id) {
     if (type === 'Meal') {
-      recomendations = recommended.map((item, i3) => (
-        <Card
-          key={ i3 }
-          datatestRecipeCard={ `${i3}-recomendation-card` }
-          datatestCardImage={ `${i3}-recomendation-img` }
-          datatestCardName={ `${i3}-recomendation-title` }
-          title={ item.strDrink }
-          thumb={ item.strDrinkThumb }
-        />
-      ));
+      history.push(`/foods/${id}/in-progress`);
     } else {
-      recomendations = recommended.map((item, i3) => (
-        <Card
-          key={ i3 }
-          datatestRecipeCard={ `${i3}-recomendation-card` }
-          datatestCardImage={ `${i3}-recomendation-img` }
-          datatestCardName={ `${i3}-recomendation-title` }
-          title={ item.strMeal }
-          thumb={ item.strMealThumb }
-        />
-      ));
-    } return recomendations;
+      history.push(`/drinks/${id}/in-progress`);
+    }
   }
+
+  function handleShareClick() {
+    copy(window.location.href);
+    global.alert('Link copied!');
+  }
+
   return (
     <div>
       {recipe.map((element, index) => (
@@ -129,8 +76,11 @@ function RecipeDetails({ match }) {
                 name={ recipe[0][`str${type}`] }
                 image={ recipe[0][`str${type}Thumb`] }
               />
+              <button onClick={ handleShareClick } data-testid="share-btn" type="button">
+                <img src="../../images/shareIcon.svg" alt="share" />
+              </button>
               <button data-testid="favorite-btn" type="button">
-                <img src="" alt="" />
+                <img src="../../images/whiteHeartIcon.svg" alt="favorite" />
               </button>
             </div>
             <h3
@@ -141,25 +91,28 @@ function RecipeDetails({ match }) {
           </div>
           <div>
             <h1>Ingredients</h1>
-            {ingredientDiv}
+            {ingredientDivConstructor(ingredients, measure)}
           </div>
           <div>
             <h1>Instructions</h1>
             <div data-testid="instructions">{element.strInstructions}</div>
           </div>
           <div className={ styles.RecomendationDiv }>
-            <h1>Video</h1>
-            {pageType === 'foods' ? videoDiv : null}
+            {pageType === 'foods' ? videoDivConstructor() : null}
             <div className={ styles.RecomendationCards }>
               <h1>Recommended</h1>
-              <div className={ styles.Card }>{cardRecomendatioConstructor()}</div>
+              <div
+                className={ styles.Card }
+              >
+                {cardRecomendatioConstructor(recommended, type)}
+              </div>
             </div>
             <Button
               className={ styles.StartRecipeButton }
               text="Start Recipe"
               name="start-recipe"
               dataTest="start-recipe-btn"
-              // onClick={ () => handleNavigation('/done-recipes') }
+              onClick={ () => handleStartButton(element[`id${type}`]) }
             />
           </div>
         </div>))}
