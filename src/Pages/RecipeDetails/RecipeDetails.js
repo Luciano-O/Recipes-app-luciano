@@ -10,6 +10,7 @@ import { cardRecomendatioConstructor,
   videoDivConstructor,
   fetchApi,
   getRecommendations } from '../../Helpers/RecipeDetailsFunctions';
+import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
 
 function RecipeDetails({ match }) {
   const pagePath = match.params;
@@ -57,6 +58,15 @@ function RecipeDetails({ match }) {
             />
             <div>
               <h1 data-testid="recipe-title">{ element[`str${type}`] }</h1>
+              <FavoriteButton
+                id={ recipe[0][`id${type}`] }
+                type="cocktail"
+                nationality={ recipe[0].strArea }
+                category={ recipe[0].strCategory }
+                alcoholicOrNot={ recipe[0].strAlcoholic }
+                name={ recipe[0][`str${type}`] }
+                image={ recipe[0][`str${type}Thumb`] }
+              />
               <button onClick={ handleShareClick } data-testid="share-btn" type="button">
                 <img src="../../images/shareIcon.svg" alt="share" />
               </button>
