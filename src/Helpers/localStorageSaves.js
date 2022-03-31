@@ -1,4 +1,4 @@
-const DONE_RECIPE = 'done';
+const DONE_RECIPES = 'doneRecipes';
 const IN_PROGRES_RECIPE = 'inProgressRecipes';
 
 // Save tokens
@@ -24,15 +24,19 @@ export const saveEmail = (email) => {
 //
 
 // Done Recipes
-export const readDoneRecipes = () => JSON.parse(localStorage.getItem(DONE_RECIPE));
+export const readDoneRecipes = () => JSON.parse(localStorage.getItem(DONE_RECIPES));
+
+if (!readDoneRecipes()) {
+  localStorage.setItem(DONE_RECIPES, JSON.stringify([]));
+}
 
 const saveDoneRecipes = (done) => localStorage
-  .setItem(DONE_RECIPE, JSON.stringify(done));
+  .setItem(DONE_RECIPES, JSON.stringify(done));
 
 export const addDoneRecipe = (doneRecipe) => {
   if (doneRecipe) {
     const done = readDoneRecipes() || [];
-    saveDoneRecipes([...doneRecipe, done]);
+    saveDoneRecipes([...done, doneRecipe]);
   }
 };
 //

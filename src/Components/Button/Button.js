@@ -18,6 +18,7 @@ function Button(props) {
 }
 
 Button.defaultProps = {
+  name: '',
   disabled: false,
   className: '',
   onClick: () => {},
@@ -26,7 +27,7 @@ Button.defaultProps = {
 Button.propTypes = {
   className: PropTypes.string,
   dataTest: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
   disabled: PropTypes.bool,

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { getProgress, saveInProgressRecipe } from '../../Helpers/localStorageSaves';
+import { addDoneRecipe, getProgress,
+  saveInProgressRecipe } from '../../Helpers/localStorageSaves';
 import Button from '../Button/Button';
 
 function ProgressDetails(props) {
@@ -14,13 +15,22 @@ function ProgressDetails(props) {
     recipeQuants,
     instructions,
     type,
+    nationality,
+    alcoholicOrNot,
+    tags,
   } = props;
   const history = useHistory();
   const [progressToSave, setProgressToSave] = useState([]);
 
+  let drinkOrFood;
+  if (type === 'meal') {
+    drinkOrFood = 'foods';
+  } else {
+    drinkOrFood = 'drink';
+  }
+
   useEffect(() => {
     if (getProgress()[type][id]) {
-      console.log(getProgress());
       setProgressToSave(getProgress()[type][id]);
     }
   }, []);
@@ -36,7 +46,23 @@ function ProgressDetails(props) {
     saveInProgressRecipe(type, id, arrChange);
   };
 
+  const lsObjGenerator = () => {
+    const doneDate = new Date(Date()).toLocaleDateString();
+
+    const lsObj = { id,
+      type: drinkOrFood,
+      nationality,
+      categoryStr,
+      alcoholicOrNot,
+      name: title,
+      img,
+      doneDate,
+      tags: tags?.split(',') || [] };
+    return lsObj;
+  };
+
   const handleClickFinish = () => {
+    addDoneRecipe(lsObjGenerator());
     history.push('/done-recipes');
   };
 
@@ -78,14 +104,22 @@ function ProgressDetails(props) {
   );
 }
 
+ProgressDetails.defaultProps = {
+  id: ',',
+  tags: '[]',
+};
+
 ProgressDetails.propTypes = {
+  alcoholicOrNot: PropTypes.string.isRequired,
+  categoryStr: PropTypes.string.isRequired,
+  id: PropTypes.string,
   img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  instructions: PropTypes.string.isRequired,
+  nationality: PropTypes.string.isRequired,
   recipeIngredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   recipeQuants: PropTypes.arrayOf(PropTypes.string).isRequired,
-  categoryStr: PropTypes.string.isRequired,
-  instructions: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  tags: PropTypes.string,
+  title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
 
