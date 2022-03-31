@@ -77,6 +77,7 @@ function FavoriteButton(props) {
 
 FavoriteButton.defaultProps = {
   nationality: '',
+  alcoholicOrNot: '',
 };
 
 FavoriteButton.propTypes = {
@@ -85,7 +86,7 @@ FavoriteButton.propTypes = {
   type: PropTypes.string.isRequired,
   nationality: PropTypes.string,
   category: PropTypes.string.isRequired,
-  alcoholicOrNot: PropTypes.string.isRequired,
+  alcoholicOrNot: PropTypes.string,
   image: PropTypes.string.isRequired,
 };
 
