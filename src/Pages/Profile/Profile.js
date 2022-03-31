@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import styles from './styles.module.css';
@@ -8,8 +8,16 @@ import Button from '../../Components/Button/Button';
 import { getEmail } from '../../Helpers/localStorageSaves';
 
 function Profile() {
+  const [email, setEmail] = useState('');
   const history = useHistory();
-  const { email } = getEmail();
+
+  useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('user'))) {
+      localStorage.setItem('user', JSON.stringify('teste@trybe.com'));
+    }
+
+    setEmail(getEmail().email);
+  });
 
   function handleNavigation(path) {
     history.push(path);
