@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../Components/Card/Card';
 import getRecipes from './API';
+import { getProgress } from './localStorageSaves';
 
 const MAX_LENGTH = 6;
 
@@ -102,5 +103,13 @@ export async function fetchApi(setRecipe, setIngredients,
     setRecipe(drinks);
     setIngredients(ingredientsAndMeasure(drinks, 'strIngredient'));
     setMeasure(ingredientsAndMeasure(drinks, 'strMeasure'));
+  }
+}
+export function recipeButtonName(type, pageId, setShowStart) {
+  const lsProgress = getProgress();
+  if (type === 'Meal' && lsProgress.meals[pageId]) {
+    setShowStart(false);
+  } if (type === 'Drink' && lsProgress.cocktails[pageId]) {
+    setShowStart(false);
   }
 }

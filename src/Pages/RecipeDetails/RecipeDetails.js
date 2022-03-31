@@ -8,9 +8,10 @@ import { cardRecomendatioConstructor,
   ingredientDivConstructor,
   videoDivConstructor,
   fetchApi,
-  getRecommendations } from '../../Helpers/RecipeDetailsFunctions';
+  getRecommendations,
+  recipeButtonName } from '../../Helpers/RecipeDetailsFunctions';
 import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
-import { getProgress, saveInProgressRecipe } from '../../Helpers/localStorageSaves';
+import { saveInProgressRecipe } from '../../Helpers/localStorageSaves';
 import ShareButton from '../../Components/ShareButton/ShareButton';
 
 function RecipeDetails({ match }) {
@@ -30,14 +31,9 @@ function RecipeDetails({ match }) {
   }
 
   useEffect(() => {
+    recipeButtonName(type, pageId, setShowStart);
     fetchApi(setRecipe, setIngredients, setMeasure, pagePath);
-    const lsProgress = getProgress();
     getRecommendations(pagePath, setRecommended);
-    if (type === 'Meal' && lsProgress.meals[pageId]) {
-      setShowStart(false);
-    } if (type === 'Drink' && lsProgress.cocktails[pageId]) {
-      setShowStart(false);
-    }
   }, []);
 
   function handleStartButton(id) {
