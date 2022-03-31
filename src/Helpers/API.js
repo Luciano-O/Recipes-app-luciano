@@ -14,4 +14,10 @@ async function getRecipes(site, mode, type) {
   return json;
 }
 
+export async function getRandomRecipe(siteValue) {
+  const response = await fetch(`https://www.the${siteValue}db.com/api/json/v1/1/random.php`);
+  const json = await response.json();
+  return json;
+}
+
 export default getRecipes;
