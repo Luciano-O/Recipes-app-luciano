@@ -21,10 +21,9 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Foods } />
       <Route exact path="/drinks" component={ Drinks } />
-      <Route exact path="/:type/:id-da-receita" component={ RecipeDetails } />
       <Route
         exact
-        path="/:type/:id-da-receita/in-progress"
+        path="/:type/:recipeId/in-progress"
         component={ RecipeProgress }
       />
       <Route exact path="/explore" component={ Explore } />
@@ -38,6 +37,7 @@ function App() {
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+      <Route exact path="/:type/:id" component={ RecipeDetails } />
     </Switch>
   );
 }

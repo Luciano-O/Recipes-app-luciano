@@ -102,10 +102,10 @@ function Foods() {
         <Link to={ `/foods/${idMeal}` } key={ idMeal }>
           <Card
             datatestRecipeCard={ `${index}-recipe-card` }
-            thumb={ strMealThumb }
-            title={ strMeal }
             datatestCardImage={ `${index}-card-img` }
             datatestCardName={ `${index}-card-name` }
+            thumb={ strMealThumb }
+            title={ strMeal }
           />
         </Link>
       ))}

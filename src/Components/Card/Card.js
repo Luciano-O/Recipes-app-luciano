@@ -13,7 +13,6 @@ function Card(props) {
   } = props;
   return (
     <div
-      role="button"
       onClick={ () => { onClick(); } }
       aria-hidden="true"
       className={ styles.Card }
@@ -33,13 +32,15 @@ Card.defaultProps = {
   datatestRecipeCard: '',
   thumb: '',
   title: '',
+  onClick: () => {},
 };
+
 Card.propTypes = {
   datatestCardImage: PropTypes.string,
   datatestCardName: PropTypes.string,
   datatestRecipeCard: PropTypes.string,
   thumb: PropTypes.string,
   title: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 export default Card;
