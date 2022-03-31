@@ -24,8 +24,8 @@
 
   .Card {
     display: flex;
-    overflow-x: scroll;
     margin-bottom: 40px;
+    overflow-x: scroll;
   }
 
   .Card div {
