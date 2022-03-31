@@ -12,13 +12,11 @@ function ProgressDetails(props) {
     recipeIngredients,
     recipeQuants,
     instructions,
-    clickShare,
   } = props;
   let savedProgress = getProgress()[title];
   if (!savedProgress) {
     savedProgress = arr;
   }
-  console.log(savedProgress);
   const [progress, setProgress] = useState(savedProgress);
   const [progressToSave, setProgressToSave] = useState(savedProgress);
 
@@ -36,7 +34,6 @@ function ProgressDetails(props) {
     } else {
       arrChange[index] = true;
     }
-    console.log(arrChange);
     setProgressToSave(arrChange);
     saveInProgressRecipe(title, arrChange);
     setProgress(arr1[index]);
@@ -52,15 +49,6 @@ function ProgressDetails(props) {
       <h2 data-testid="recipe-title">
         {title}
       </h2>
-      <Button
-        text="Share"
-        dataTest="share-btn"
-        onClick={ clickShare }
-      />
-      <Button
-        text="Favorite"
-        dataTest="favorite-btn"
-      />
       <h3 data-testid="recipe-category">
         {categoryStr}
       </h3>
@@ -94,7 +82,6 @@ ProgressDetails.propTypes = {
   recipeQuants: PropTypes.arrayOf(PropTypes.string).isRequired,
   categoryStr: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
-  clickShare: PropTypes.func.isRequired,
 };
 
 export default ProgressDetails;

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 
 function ShareButton(props) {
   const { recipeLink } = props;
+  const [clicked, setClicked] = useState(false);
 
   function handleShare(link) {
-    if (link) {
-      alert('Link copied!');
-    }
+    const TIME = 5000;
+    navigator.clipboard.writeText(link);
+    setClicked(true);
+    setTimeout(() => { setClicked(false); }, TIME);
   }
 
   return (
@@ -16,11 +18,14 @@ function ShareButton(props) {
       <button
         type="button"
         aria-label="Share button"
+        data-testid="share-btn"
         src={ shareIcon }
         onClick={ () => handleShare(recipeLink) }
       >
         <img src={ shareIcon } alt="ícone de compartilhar" />
       </button>
+      {clicked
+      && <p>Link copied!</p>}
     </div>
   );
 }
