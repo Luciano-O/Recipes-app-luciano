@@ -24,7 +24,7 @@ function FavoriteButton(props) {
 
   useEffect(() => {
     const setFav1 = () => {
-      const isFave = getFavorites().some((item) => item === id);
+      const isFave = getFavorites().some((item) => item.id === id);
       if (isFave) {
         setFav(true);
       }
@@ -36,7 +36,7 @@ function FavoriteButton(props) {
     const isFave = getFavorites().some((item) => item.id === id);
     if (isFave) {
       removeFavoriteRecipe(recipeToSave);
-      console.log('aqui')
+      console.log('aqui');
     } else {
       saveFavoriteRecipe(recipeToSave);
     }

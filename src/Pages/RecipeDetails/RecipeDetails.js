@@ -5,6 +5,7 @@ import Button from '../../Components/Button/Button';
 import styles from './styles.module.css';
 import getRecipes from '../../Helpers/API';
 import RecipesContext from '../../Context/RecipesContext';
+import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
 
 const MAX_LENGTH = 6;
 
@@ -119,9 +120,15 @@ function RecipeDetails({ match }) {
             />
             <div>
               <h1 data-testid="recipe-title">{ element[`str${type}`] }</h1>
-              <button data-testid="share-btn" type="button">
-                <img src="" alt={ index } />
-              </button>
+              <FavoriteButton
+                id={ recipe[0][`id${type}`] }
+                type="cocktail"
+                nationality={ recipe[0].strArea }
+                category={ recipe[0].strCategory }
+                alcoholicOrNot={ recipe[0].strAlcoholic }
+                name={ recipe[0][`str${type}`] }
+                image={ recipe[0][`str${type}Thumb`] }
+              />
               <button data-testid="favorite-btn" type="button">
                 <img src="" alt="" />
               </button>
