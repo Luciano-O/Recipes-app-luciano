@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import { getFavorites,
@@ -73,5 +74,15 @@ function FavoriteButton(props) {
     </div>
   );
 }
+
+FavoriteButton.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  nationality: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  alcoholicOrNot: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
 
 export default FavoriteButton;

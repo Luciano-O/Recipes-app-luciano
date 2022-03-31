@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { getProgress, saveInProgressRecipe } from '../../Helpers/localStorageSaves';
 import Button from '../Button/Button';
 import arr from './Data';
@@ -13,19 +14,13 @@ function ProgressDetails(props) {
     recipeQuants,
     instructions,
   } = props;
+  const history = useHistory();
   let savedProgress = getProgress()[title];
   if (!savedProgress) {
-    savedProgress = arr;
+    savedProgress = arr.slice(0, recipeIngredients.length);
   }
-  const [progress, setProgress] = useState(savedProgress);
   const [progressToSave, setProgressToSave] = useState(savedProgress);
-
-  useEffect(() => {
-    const set = () => {
-      setProgress(getProgress[title]);
-    };
-    set();
-  }, []);
+  const [disabled, setDisabled] = useState(!progressToSave.every((item) => item));
 
   const handleClick = (arr1, index) => {
     const arrChange = arr1;
@@ -35,8 +30,13 @@ function ProgressDetails(props) {
       arrChange[index] = true;
     }
     setProgressToSave(arrChange);
+    savedProgress = 'asd';
     saveInProgressRecipe(title, arrChange);
-    setProgress(arr1[index]);
+    setDisabled(!progressToSave.every((item) => item));
+  };
+
+  const handleClickFinish = () => {
+    history.push('/done-recipes');
   };
 
   return (
@@ -58,7 +58,7 @@ function ProgressDetails(props) {
             <input
               type="checkbox"
               name={ `item ${index}` }
-              checked={ progress && progress[index] }
+              checked={ savedProgress[index] }
               onChange={ () => handleClick(progressToSave, index) }
             />
             <label htmlFor={ `item ${index}` }>{`${item} ${recipeQuants[index]}`}</label>
@@ -68,8 +68,10 @@ function ProgressDetails(props) {
         {instructions}
       </p>
       <Button
-        text="Done"
+        text="Finish recipe"
         dataTest="finish-recipe-btn"
+        disabled={ disabled }
+        onClick={ handleClickFinish }
       />
     </div>
   );

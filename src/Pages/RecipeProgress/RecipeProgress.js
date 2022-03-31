@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
-import Header from '../../Components/Header/Header';
 import ProgressDetails from '../../Components/ProgressDetails/ProgressDetails';
 import ShareButton from '../../Components/ShareButton/ShareButton';
 import getRecipes from '../../Helpers/API';
@@ -35,7 +34,7 @@ function RecipeProgress() {
         const value = Object.values(meals);
         const ingValues = Object.values(value[0]).slice(MIN_QUANT, MAX_QUANT);
         const quantValue = Object.values(value[0]).slice(MIN_ING, MAX_ING);
-        setIngredients(ingValues.filter((item) => item));
+        setIngredients(ingValues.filter((item) => item && (item !== ' ')));
         setIngredientsQuant(quantValue.filter((item) => item));
         setRecipe(meals[0]);
       };
@@ -62,10 +61,10 @@ function RecipeProgress() {
     <>
       <FavoriteButton
         id={ recipeId }
-        type="meal"
+        type="food"
         nationality={ recipe.strArea }
         category={ recipe.strCategory }
-        alcoholicOrNot="food"
+        alcoholicOrNot=""
         name={ recipe.strMeal }
         image={ recipe.strMealThumb }
       />
@@ -84,8 +83,8 @@ function RecipeProgress() {
     <>
       <FavoriteButton
         id={ recipeId }
-        type="cocktail"
-        nationality={ recipe.strArea }
+        type="drink"
+        nationality={ recipe.strArea ? recipe.strArea : '' }
         category={ recipe.strCategory }
         alcoholicOrNot={ recipe.strAlcoholic }
         name={ recipe.strDrink }
@@ -104,7 +103,6 @@ function RecipeProgress() {
 
   return (
     <div>
-      <Header />
       <h1>RecipeProgress</h1>
       <ShareButton recipeLink={ `http://localhost:3000/${type}/${recipeId}` } />
       {recipe && (thisType === 'meal' ? mealsInfo() : drinksInfo())}
