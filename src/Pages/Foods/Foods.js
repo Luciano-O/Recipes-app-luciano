@@ -20,6 +20,7 @@ function Foods() {
     finalItems,
     setFinalItems,
     setFirst12,
+    recipesByIngridients,
   } = useContext(RecipesContext);
 
   const handleCategoryClick = async ({ target }) => {
@@ -48,10 +49,17 @@ function Foods() {
   useEffect(() => {
     setSiteValue('meal');
     const bringItens = async () => {
-      const final = await getRecipes('meal', 'search', 's=');
-      setApiValue(final);
-      setFirst12(final?.meals?.slice(0, MAX_LENGTH));
-      setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
+      if (!recipesByIngridients) {
+        const final = await getRecipes('meal', 'search', 's=');
+        setApiValue(final);
+        setFirst12(final?.meals?.slice(0, MAX_LENGTH));
+        setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
+      } else {
+        const final = await getRecipes('meal', 'filter', `i=${recipesByIngridients}`);
+        setApiValue(final);
+        setFirst12(final?.meals?.slice(0, MAX_LENGTH));
+        setFinalItems(final?.meals?.slice(0, MAX_LENGTH));
+      }
     };
     const bringCategories = async () => {
       const final = await getRecipes('meal', 'list', 'c=list');
@@ -93,9 +101,11 @@ function Foods() {
       {finalItems && finalItems.map(({ idMeal, strMealThumb, strMeal }, index) => (
         <Link to={ `/foods/${idMeal}` } key={ idMeal }>
           <Card
-            index={ index }
+            datatestRecipeCard={ `${index}-recipe-card` }
             thumb={ strMealThumb }
             title={ strMeal }
+            datatestCardImage={ `${index}-card-img` }
+            datatestCardName={ `${index}-card-name` }
           />
         </Link>
       ))}
