@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { getProgress, saveInProgressRecipe } from '../../Helpers/localStorageSaves';
 import Button from '../Button/Button';
-import arr from './Data';
 
 function ProgressDetails(props) {
   const {
     img,
+    id,
     title,
     categoryStr,
     recipeIngredients,
@@ -15,24 +15,24 @@ function ProgressDetails(props) {
     instructions,
   } = props;
   const history = useHistory();
-  let savedProgress = getProgress()[title];
-  if (!savedProgress) {
-    savedProgress = arr.slice(0, recipeIngredients.length);
-  }
-  const [progressToSave, setProgressToSave] = useState(savedProgress);
-  const [disabled, setDisabled] = useState(!progressToSave.every((item) => item));
+  const [progressToSave, setProgressToSave] = useState([]);
 
-  const handleClick = (arr1, index) => {
-    const arrChange = arr1;
-    if (arrChange[index]) {
-      arrChange[index] = false;
+  useEffect(() => {
+    if (getProgress()[id]) {
+      setProgressToSave(getProgress()[id]);
+    }
+  }, []);
+
+  const handleClick = (arr1, item) => {
+    let arrChange;
+    if (arr1.includes(item)) {
+      arrChange = arr1.filter((item1) => item1 !== item);
+      console.log(arrChange);
     } else {
-      arrChange[index] = true;
+      arrChange = arr1.concat(item);
     }
     setProgressToSave(arrChange);
-    savedProgress = 'asd';
-    saveInProgressRecipe(title, arrChange);
-    setDisabled(!progressToSave.every((item) => item));
+    saveInProgressRecipe(id, arrChange);
   };
 
   const handleClickFinish = () => {
@@ -58,8 +58,8 @@ function ProgressDetails(props) {
             <input
               type="checkbox"
               name={ `item ${index}` }
-              checked={ savedProgress[index] }
-              onChange={ () => handleClick(progressToSave, index) }
+              checked={ progressToSave && progressToSave.includes(item) }
+              onChange={ () => handleClick(progressToSave, item) }
             />
             <label htmlFor={ `item ${index}` }>{`${item} ${recipeQuants[index]}`}</label>
           </li>)) }
@@ -70,7 +70,7 @@ function ProgressDetails(props) {
       <Button
         text="Finish recipe"
         dataTest="finish-recipe-btn"
-        disabled={ disabled }
+        disabled={ progressToSave.length !== recipeIngredients.length }
         onClick={ handleClickFinish }
       />
     </div>
@@ -84,6 +84,7 @@ ProgressDetails.propTypes = {
   recipeQuants: PropTypes.arrayOf(PropTypes.string).isRequired,
   categoryStr: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default ProgressDetails;
