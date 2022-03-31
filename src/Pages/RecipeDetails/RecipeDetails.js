@@ -4,14 +4,12 @@ import { useHistory } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
 import Button from '../../Components/Button/Button';
 import styles from './styles.module.css';
-// import getRecipes from '../../Helpers/API';
+// import { addInProgressRecipe } from '../../Helpers/localStorageSaves';
 import { cardRecomendatioConstructor,
   ingredientDivConstructor,
   videoDivConstructor,
   fetchApi,
   getRecommendations } from '../../Helpers/RecipeDetailsFunctions';
-
-// import { addInProgressRecipe } from '../../Helpers/localStorageSaves';
 
 function RecipeDetails({ match }) {
   const pagePath = match.params;
@@ -29,13 +27,6 @@ function RecipeDetails({ match }) {
     type = 'Drink';
   }
 
-  if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
-    localStorage.setItem('inProgressRecipes', JSON.stringify({
-      cocktails: {},
-      meals: {},
-    }));
-  }
-
   useEffect(() => {
     fetchApi(setRecipe, setIngredients, setMeasure, pagePath);
     getRecommendations(pagePath, setRecommended);
@@ -51,7 +42,7 @@ function RecipeDetails({ match }) {
 
   function handleShareClick() {
     copy(window.location.href);
-    global.alert('Link copied!');
+    global.alert('"Link copied!"');
   }
 
   return (

@@ -3,22 +3,6 @@ const IN_PROGRES_RECIPE = 'inProgressRecipes';
 
 localStorage.setItem('user', JSON.stringify({ email: 'teste@trybe.com' }));
 
-export const saveTokenFood = () => {
-  localStorage.setItem('mealsToken', 1);
-};
-
-export const getProgress = () => JSON.parse(localStorage.getItem('inProgressRecipes'));
-
-if (!getProgress()) {
-  localStorage.setItem('inProgressRecipes', JSON.stringify({}));
-}
-
-export const saveInProgressRecipe = (name, arr) => {
-  const atualObj = getProgress();
-  atualObj[name] = arr;
-  localStorage.setItem('inProgressRecipes', JSON.stringify(atualObj));
-};
-
 export const saveTokenDrink = () => {
   localStorage.setItem('cocktailsToken', 1);
 };
@@ -82,6 +66,13 @@ export const readInProgressRecipes = () => JSON.parse(
   localStorage.getItem(IN_PROGRES_RECIPE),
 );
 
+if (!JSON.parse(localStorage.getItem('inProgressRecipes'))) {
+  localStorage.setItem('inProgressRecipes', JSON.stringify({
+    cocktails: {},
+    meals: {},
+  }));
+}
+
 const saveInProgressRecipes = (inProgressRecipe) => localStorage
   .setItem(IN_PROGRES_RECIPE, JSON.stringify(inProgressRecipe));
 
@@ -90,4 +81,20 @@ export const addInProgressRecipe = (inProgressRecipeRecipe) => {
     const inProgress = readInProgressRecipes() || {};
     saveInProgressRecipes([...inProgressRecipeRecipe, inProgress]);
   }
+};
+
+export const saveTokenFood = () => {
+  localStorage.setItem('mealsToken', 1);
+};
+
+export const getProgress = () => JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+if (!getProgress()) {
+  localStorage.setItem('inProgressRecipes', JSON.stringify({}));
+}
+
+export const saveInProgressRecipe = (name, arr) => {
+  const atualObj = getProgress();
+  atualObj[name] = arr;
+  localStorage.setItem('inProgressRecipes', JSON.stringify(atualObj));
 };
