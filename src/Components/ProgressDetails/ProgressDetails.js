@@ -29,7 +29,7 @@ function ProgressDetails(props) {
       arrChange = arr1.filter((item1) => item1 !== item);
       console.log(arrChange);
     } else {
-      arrChange = arr1.concat(item);
+      arrChange = arr1?.concat(item);
     }
     setProgressToSave(arrChange);
     saveInProgressRecipe(id, arrChange);

@@ -40,9 +40,13 @@ export const addDoneRecipe = (doneRecipe) => {
 // Favorite button
 export const getFavorites = () => JSON.parse(localStorage.getItem('favoriteRecipes'));
 
+if (!getFavorites()) {
+  localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+}
+
 export const saveFavoriteRecipe = (id) => {
   const atualArr = getFavorites();
-  const finalArr = atualArr.concat(id);
+  const finalArr = atualArr?.concat(id);
   localStorage.setItem('favoriteRecipes', JSON.stringify(finalArr));
 };
 

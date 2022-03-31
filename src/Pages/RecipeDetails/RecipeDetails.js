@@ -9,6 +9,7 @@ import { cardRecomendatioConstructor,
   videoDivConstructor,
   fetchApi,
   getRecommendations,
+  handleStartButton,
   recipeButtonName } from '../../Helpers/RecipeDetailsFunctions';
 import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
 import { saveInProgressRecipe } from '../../Helpers/localStorageSaves';
@@ -36,16 +37,6 @@ function RecipeDetails({ match }) {
     getRecommendations(pagePath, setRecommended);
   }, []);
 
-  function handleStartButton(id) {
-    if (type === 'Meal') {
-      saveInProgressRecipe('meals', id, []);
-      history.push(`/foods/${id}/in-progress`);
-    } else {
-      saveInProgressRecipe('cocktails', id, []);
-      history.push(`/drinks/${id}/in-progress`);
-    }
-  }
-
   return (
     <div>
       {recipe.map((element, index) => (
@@ -60,10 +51,10 @@ function RecipeDetails({ match }) {
               <h1 data-testid="recipe-title">{ element[`str${type}`] }</h1>
               <FavoriteButton
                 id={ recipe[0][`id${type}`] }
-                type="cocktail"
-                nationality={ recipe[0].strArea }
-                category={ recipe[0].strCategory }
-                alcoholicOrNot={ recipe[0].strAlcoholic }
+                type={ `${type === 'Meal' ? 'food' : 'drink'}` }
+                nationality={ recipe[0].strArea || '' }
+                category={ recipe[0].strCategory || '' }
+                alcoholicOrNot={ recipe[0].strAlcoholic || '' }
                 name={ recipe[0][`str${type}`] }
                 image={ recipe[0][`str${type}Thumb`] }
               />
@@ -98,14 +89,15 @@ function RecipeDetails({ match }) {
               text={ showStart ? 'Start Recipe' : 'Continue Recipe' }
               name="start-recipe"
               dataTest="start-recipe-btn"
-              onClick={ () => handleStartButton(element[`id${type}`]) }
+              onClick={ () => handleStartButton(
+                element[`id${type}`], type, history, saveInProgressRecipe,
+              ) }
             />
           </div>
         </div>))}
     </div>
   );
 }
-
 RecipeDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({

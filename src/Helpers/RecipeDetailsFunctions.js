@@ -113,3 +113,13 @@ export function recipeButtonName(type, pageId, setShowStart) {
     setShowStart(false);
   }
 }
+
+export function handleStartButton(id, type, history, saveInProgressRecipe) {
+  if (type === 'Meal') {
+    saveInProgressRecipe('meals', id, []);
+    history.push(`/foods/${id}/in-progress`);
+  } else {
+    saveInProgressRecipe('cocktails', id, []);
+    history.push(`/drinks/${id}/in-progress`);
+  }
+}

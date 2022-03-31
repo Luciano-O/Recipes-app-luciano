@@ -34,7 +34,7 @@ function FavoriteButton(props) {
   }, []);
 
   const handleClick = () => {
-    const isFave = getFavorites().some((item) => item.id === id);
+    const isFave = getFavorites()?.some((item) => item.id === id);
     if (isFave) {
       removeFavoriteRecipe(recipeToSave);
       console.log('aqui');
@@ -49,7 +49,7 @@ function FavoriteButton(props) {
       type="button"
       aria-label="Favorite button empty"
       data-testid="favorite-btn"
-      src={ whiteHeartIcon }
+      src="../../images/whiteHeartIcon.svg"
       onClick={ handleClick }
     >
       <img src={ whiteHeartIcon } alt="imagem de um coração" />
@@ -60,7 +60,7 @@ function FavoriteButton(props) {
     <button
       type="button"
       aria-label="Favorite button filled"
-      src={ blackHeartIcon }
+      src="../../images/blackHeartIcon.svg"
       onClick={ handleClick }
       data-testid="favorite-btn"
     >
