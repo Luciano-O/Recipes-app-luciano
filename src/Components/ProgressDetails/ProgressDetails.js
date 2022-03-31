@@ -13,13 +13,15 @@ function ProgressDetails(props) {
     recipeIngredients,
     recipeQuants,
     instructions,
+    type,
   } = props;
   const history = useHistory();
   const [progressToSave, setProgressToSave] = useState([]);
 
   useEffect(() => {
-    if (getProgress()[id]) {
-      setProgressToSave(getProgress()[id]);
+    if (getProgress()[type][id]) {
+      console.log(getProgress());
+      setProgressToSave(getProgress()[type][id]);
     }
   }, []);
 
@@ -32,7 +34,7 @@ function ProgressDetails(props) {
       arrChange = arr1?.concat(item);
     }
     setProgressToSave(arrChange);
-    saveInProgressRecipe(id, arrChange);
+    saveInProgressRecipe(type, id, arrChange);
   };
 
   const handleClickFinish = () => {
@@ -58,7 +60,7 @@ function ProgressDetails(props) {
             <input
               type="checkbox"
               name={ `item ${index}` }
-              checked={ progressToSave && progressToSave.includes(item) }
+              defaultChecked={ progressToSave && progressToSave.includes(item) }
               onChange={ () => handleClick(progressToSave, item) }
             />
             <label htmlFor={ `item ${index}` }>{`${item} ${recipeQuants[index]}`}</label>
@@ -85,6 +87,7 @@ ProgressDetails.propTypes = {
   categoryStr: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ProgressDetails;

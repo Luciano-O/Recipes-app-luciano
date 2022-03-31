@@ -47,8 +47,8 @@ function RecipeProgress() {
       const bringItem = async () => {
         const { drinks } = await getRecipes(thisType, 'lookup', `i=${recipeId}`);
         const value = Object.values(drinks);
-        const ingValues = Object.values(value[0]).slice(MIN_QUANT, MAX_QUANT);
-        const quantValue = Object.values(value[0]).slice(MIN_ING, MAX_ING);
+        const ingValues = Object.values(value[0]).slice(MIN_ING, MAX_ING);
+        const quantValue = Object.values(value[0]).slice(MIN_QUANT, MAX_QUANT);
         setIngredients(ingValues.filter((item) => item));
         setIngredientsQuant(quantValue.filter((item) => item));
         setRecipe(drinks[0]);
@@ -72,6 +72,7 @@ function RecipeProgress() {
         img={ recipe.strMealThumb }
         title={ recipe.strMeal }
         categoryStr={ recipe.strCategory }
+        type="meals"
         id={ recipeId }
         recipeIngredients={ ingredients }
         recipeQuants={ ingredientsQuant }
@@ -93,6 +94,7 @@ function RecipeProgress() {
       />
       <ProgressDetails
         img={ recipe.strDrinkThumb }
+        type="cocktails"
         title={ recipe.strDrink }
         id={ recipeId }
         categoryStr={ recipe.strCategory }
