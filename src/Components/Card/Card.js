@@ -32,6 +32,7 @@ Card.defaultProps = {
   datatestRecipeCard: '',
   thumb: '',
   title: '',
+  onClick: () => {},
 };
 
 Card.propTypes = {
@@ -40,6 +41,6 @@ Card.propTypes = {
   datatestRecipeCard: PropTypes.string,
   thumb: PropTypes.string,
   title: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 export default Card;

@@ -5,6 +5,7 @@ import Header from '../../Components/Header/Header';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 import Button from '../../Components/Button/Button';
 import { getRandomRecipe } from '../../Helpers/API';
+import styles from './styles.module.css';
 
 function ExploreDetails({ match }) {
   const pageTitle = match.params.type;
@@ -41,7 +42,7 @@ function ExploreDetails({ match }) {
     dataTest="explore-by-nationality"
     onClick={ () => handleClickNation('foods') }
     name="explore-by-nationality-btn"
-    className="none"
+    className={ styles.NationalityButton }
     text="By Nationality"
     disabled={ false }
   />);
@@ -56,7 +57,7 @@ function ExploreDetails({ match }) {
         dataTest="explore-by-ingredient"
         onClick={ () => handleClickIngred(foodOrDrink) }
         name="explore-by-ingredient-btn"
-        className="none"
+        className={ styles.IngredientButton }
         text="By Ingredient"
         disabled={ false }
       />
@@ -65,7 +66,7 @@ function ExploreDetails({ match }) {
         dataTest="explore-surprise"
         onClick={ () => handleClickRandom() }
         name="explore-surprise-btn"
-        className="none"
+        className={ styles.SurpriseButton }
         text="Surprise me!"
         disabled={ false }
       />
