@@ -49,7 +49,7 @@ function RecipeProgress() {
         const value = Object.values(drinks);
         const ingValues = Object.values(value[0]).slice(MIN_ING, MAX_ING);
         const quantValue = Object.values(value[0]).slice(MIN_QUANT, MAX_QUANT);
-        setIngredients(ingValues.filter((item) => item));
+        setIngredients(ingValues.filter((item) => item && ((!item.includes('https://')))));
         setIngredientsQuant(quantValue.filter((item) => item));
         setRecipe(drinks[0]);
       };
@@ -94,10 +94,10 @@ function RecipeProgress() {
       />
       <ProgressDetails
         img={ recipe.strDrinkThumb }
-        type="cocktails"
         title={ recipe.strDrink }
-        id={ recipeId }
         categoryStr={ recipe.strCategory }
+        type="cocktails"
+        id={ recipeId }
         recipeIngredients={ ingredients }
         recipeQuants={ ingredientsQuant }
         instructions={ recipe.strInstructions }

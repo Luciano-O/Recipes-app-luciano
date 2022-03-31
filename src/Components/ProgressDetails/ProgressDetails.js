@@ -29,7 +29,6 @@ function ProgressDetails(props) {
     let arrChange;
     if (arr1.includes(item)) {
       arrChange = arr1.filter((item1) => item1 !== item);
-      console.log(arrChange);
     } else {
       arrChange = arr1?.concat(item);
     }
