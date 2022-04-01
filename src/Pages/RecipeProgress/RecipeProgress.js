@@ -73,10 +73,14 @@ function RecipeProgress() {
         title={ recipe.strMeal }
         categoryStr={ recipe.strCategory }
         type="meals"
+        nationality={ recipe.strArea }
+        category={ recipe.strCategory }
+        alcoholicOrNot=""
         id={ recipeId }
         recipeIngredients={ ingredients }
         recipeQuants={ ingredientsQuant }
         instructions={ recipe.strInstructions }
+        tags={ recipe.strTags }
       />
     </>
   );
@@ -97,10 +101,13 @@ function RecipeProgress() {
         title={ recipe.strDrink }
         categoryStr={ recipe.strCategory }
         type="cocktails"
+        nationality={ recipe.strArea ? recipe.strArea : '' }
+        alcoholicOrNot={ recipe.strAlcoholic }
         id={ recipeId }
         recipeIngredients={ ingredients }
         recipeQuants={ ingredientsQuant }
         instructions={ recipe.strInstructions }
+        tags={ recipe.strTags }
       />
     </>
   );

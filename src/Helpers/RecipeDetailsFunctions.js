@@ -4,6 +4,7 @@ import getRecipes from './API';
 import { getProgress } from './localStorageSaves';
 
 const MAX_LENGTH = 6;
+const MAGIC_NUMBER_32 = 32;
 
 export function ingredientsAndMeasure(keyType, text) {
   return (Object.entries(keyType[0]).filter(
@@ -50,23 +51,34 @@ export function ingredientDivConstructor(ingredients, measure) {
   ));
 }
 
-export function videoDivConstructor() {
+export function videoDivConstructor(video) {
+  const videoEmbed = video.slice(MAGIC_NUMBER_32);
   return (
     <>
       <h1>Video</h1>
-      <video
+      <iframe
+        src={ `https://www.youtube.com/embed/${videoEmbed}` }
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        data-testid="video"
+      />
+      {/* <video
         controls
-        src="/media/cc0-videos/friday.mp4"
+        src={ video }
+        type="video/mp4"
       >
         <track
           default
           kind="captions"
           srcLang="en"
-          src="/media/examples/friday.vtt"
+          src={ video }
           data-testid="video"
+
         />
         Sorry, your browser doesnt support embedded videos.
-      </video>
+      </video> */}
     </>
   );
 }

@@ -12,13 +12,12 @@ function ShareButton(props) {
     setClicked(true);
     setTimeout(() => { setClicked(false); }, TIME);
   }
-
   return (
     <div>
       <button
         type="button"
         aria-label="Share button"
-        data-testid={ dataTest || 'share-btn' }
+        data-testid={ dataTest }
         src={ shareIcon }
         onClick={ () => handleShare(recipeLink) }
       >
@@ -30,9 +29,13 @@ function ShareButton(props) {
   );
 }
 
+ShareButton.defaultProps = {
+  dataTest: 'share-btn',
+};
+
 ShareButton.propTypes = {
   recipeLink: PropTypes.string.isRequired,
-  dataTest: PropTypes.string.isRequired,
+  dataTest: PropTypes.string,
 };
 
 export default ShareButton;

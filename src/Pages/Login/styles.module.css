@@ -1,3 +1,70 @@
-* {
-  margin: 0;
+.LoginBodyDiv {
+  align-items: center;
+  background-color: #ffdb6b;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.LoginDiv {
+  border: 5px solid #021e10;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 18em;
+  justify-content: center;
+  padding: 1em;
+  width: 18em;
+}
+
+.LoginDiv button {
+  background-color: #021e10;
+  border-radius: 10px;
+  color: #ffdb6b;
+  font-size: 20px;
+  height: 2em;
+}
+
+.LoginDiv button:disabled {
+  background-color: #444645;
+  border-radius: 10px;
+  color: #313332;
+  font-size: 20px;
+  height: 2em;
+}
+
+.LoginDiv span {
+  align-items: center;
+  background-color: #021e10;
+  border-radius: 10px 0 0 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 2.5em;
+}
+
+.LoginDiv input {
+  align-items: center;
+  background-color: #021e10;
+  color: #ffdb6b;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 2.5em;
+}
+
+.LoginDiv input:focus {
+  color: #ffdb6b;
+  background-color: #021e10;
+}
+
+.LoginDiv input::after {
+  color: #ffdb6b;
+  background-color: #021e10;
+}
+
+.LoginDiv input::placeholder {
+  color: #ffdb6b;
 }
