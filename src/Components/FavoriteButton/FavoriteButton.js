@@ -14,6 +14,8 @@ function FavoriteButton(props) {
     category,
     alcoholicOrNot,
     name,
+    callback,
+    dataTest,
     image } = props;
   const recipeToSave = { id,
     type,
@@ -34,10 +36,10 @@ function FavoriteButton(props) {
   }, []);
 
   const handleClick = () => {
+    callback();
     const isFave = getFavorites()?.some((item) => item.id === id);
     if (isFave) {
       removeFavoriteRecipe(recipeToSave);
-      console.log('aqui');
     } else {
       saveFavoriteRecipe(recipeToSave);
     }
@@ -62,7 +64,7 @@ function FavoriteButton(props) {
       aria-label="Favorite button filled"
       src="../../images/blackHeartIcon.svg"
       onClick={ handleClick }
-      data-testid="favorite-btn"
+      data-testid={ dataTest || 'favorite-btn' }
     >
       <img src={ blackHeartIcon } alt="imagem de um coração" />
     </button>
@@ -78,6 +80,8 @@ function FavoriteButton(props) {
 FavoriteButton.defaultProps = {
   nationality: '',
   alcoholicOrNot: '',
+  callback: () => {},
+  dataTest: '',
 };
 
 FavoriteButton.propTypes = {
@@ -88,6 +92,8 @@ FavoriteButton.propTypes = {
   category: PropTypes.string.isRequired,
   alcoholicOrNot: PropTypes.string,
   image: PropTypes.string.isRequired,
+  callback: PropTypes.func,
+  dataTest: PropTypes.string,
 };
 
 export default FavoriteButton;

@@ -26,7 +26,6 @@ function Search() {
 
   function checkNumberOfItems(api) {
     if (api?.meals?.length === 1) {
-      console.log('entrou no if');
       const mealId = api?.meals[0]?.idMeal;
       setApiValue(api);
       history.push(`/foods/${mealId}`);
@@ -85,6 +84,7 @@ function Search() {
         type="text"
         data-testid="search-input"
         placeholder="Pesquisar"
+        value={ searchValue }
         onChange={ handleSearchValue }
       />
       <ButtonGroup>
