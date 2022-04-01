@@ -36,7 +36,6 @@ function RecipeDetails({ match }) {
     fetchApi(setRecipe, setIngredients, setMeasure, pagePath);
     getRecommendations(pagePath, setRecommended);
   }, []);
-
   return (
     <div>
       {recipe.map((element, index) => (
@@ -75,7 +74,7 @@ function RecipeDetails({ match }) {
             <div data-testid="instructions">{element.strInstructions}</div>
           </div>
           <div className={ styles.RecomendationDiv }>
-            {pageType === 'foods' ? videoDivConstructor() : null}
+            {pageType === 'foods' ? videoDivConstructor(element.strYoutube) : null}
             <div className={ styles.RecomendationCards }>
               <h1>Recommended</h1>
               <div

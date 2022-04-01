@@ -23,7 +23,7 @@ function ProgressDetails(props) {
   const [progressToSave, setProgressToSave] = useState([]);
 
   let drinkOrFood;
-  if (type === 'meal') {
+  if (type === 'meals') {
     drinkOrFood = 'foods';
   } else {
     drinkOrFood = 'drink';
@@ -52,10 +52,10 @@ function ProgressDetails(props) {
     const lsObj = { id,
       type: drinkOrFood,
       nationality,
-      categoryStr,
+      category: categoryStr,
       alcoholicOrNot,
       name: title,
-      img,
+      image: img,
       doneDate,
       tags: tags?.split(',') || [] };
     return lsObj;
