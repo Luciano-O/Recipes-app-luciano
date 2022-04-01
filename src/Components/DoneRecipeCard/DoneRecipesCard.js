@@ -8,7 +8,6 @@ import styles from './styles.module.css';
 function DoneRecipeCard({ filter }) {
   const history = useHistory();
   let doneRecipeInfo = readDoneRecipes();
-  console.log(doneRecipeInfo);
   function FilterCards() {
     if (filter === 'drink') {
       doneRecipeInfo = readDoneRecipes && readDoneRecipes().filter(
@@ -30,7 +29,6 @@ function DoneRecipeCard({ filter }) {
   }
   return (
     <div className={ styles.DoneRecipeCard }>
-      {console.log(doneRecipeInfo)}
       ;
       {doneRecipeInfo && doneRecipeInfo.map((recipe, index) => (
         <div
@@ -82,7 +80,7 @@ function DoneRecipeCard({ filter }) {
                 ),
               )}
             </div>
-            <ShareButton dataTestId={ `${index}-horizontal-share-btn` } recipeLink={ `http://localhost:3000/${recipe.type}s/${recipe.id}` } />
+            <ShareButton dataTest={ `${index}-horizontal-share-btn` } recipeLink={ `http://localhost:3000/${recipe.type}s/${recipe.id}` } />
           </div>
         </div>
       ))}
