@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import shareIcon from '../../images/shareIcon.svg';
 
 function ShareButton(props) {
-  const { recipeLink } = props;
+  const { recipeLink, dataTest } = props;
   const [clicked, setClicked] = useState(false);
 
   function handleShare(link) {
@@ -18,7 +18,7 @@ function ShareButton(props) {
       <button
         type="button"
         aria-label="Share button"
-        data-testid="share-btn"
+        data-testid={ dataTest || 'share-btn' }
         src={ shareIcon }
         onClick={ () => handleShare(recipeLink) }
       >
@@ -32,6 +32,7 @@ function ShareButton(props) {
 
 ShareButton.propTypes = {
   recipeLink: PropTypes.string.isRequired,
+  dataTest: PropTypes.string.isRequired,
 };
 
 export default ShareButton;
