@@ -47,22 +47,21 @@
 .LoginDiv input {
   align-items: center;
   background-color: #021e10;
-  color: #ffdb6b;
   border-radius: 10px;
-  color: white;
+  color: #ffdb6b;
   display: flex;
   justify-content: center;
   width: 2.5em;
 }
 
 .LoginDiv input:focus {
-  color: #ffdb6b;
   background-color: #021e10;
+  color: #ffdb6b;
 }
 
-.LoginDiv input::after {
-  color: #ffdb6b;
+.LoginDiv input:after {
   background-color: #021e10;
+  color: #ffdb6b;
 }
 
 .LoginDiv input::placeholder {

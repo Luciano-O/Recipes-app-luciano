@@ -8,7 +8,6 @@ function DoneRecipes() {
   const [filterButton, setFilterButton] = useState('all');
 
   function handleFilterClick({ target }) {
-    console.log(target);
     if (filterButton !== target.name) {
       setFilterButton(target.name);
     } else {
