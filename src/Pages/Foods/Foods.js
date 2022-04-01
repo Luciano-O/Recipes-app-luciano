@@ -69,14 +69,6 @@ function Foods() {
     bringItens();
   }, []);
 
-  // useEffect(() => {
-  //   const attOtherItens = () => {
-  //     setFinalItems(apiValue.meals);
-  //   };
-  //   console.log('oi');
-  //   attOtherItens();
-  // }, [apiValue]);
-
   return (
     <div>
       <Header

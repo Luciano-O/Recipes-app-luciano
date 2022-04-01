@@ -40,7 +40,6 @@ function FavoriteButton(props) {
     const isFave = getFavorites()?.some((item) => item.id === id);
     if (isFave) {
       removeFavoriteRecipe(recipeToSave);
-      console.log('aqui');
     } else {
       saveFavoriteRecipe(recipeToSave);
     }

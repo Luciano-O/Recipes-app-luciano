@@ -20,7 +20,6 @@ function ProgressDetails(props) {
 
   useEffect(() => {
     if (getProgress()[type][id]) {
-      console.log(getProgress());
       setProgressToSave(getProgress()[type][id]);
     }
   }, []);
