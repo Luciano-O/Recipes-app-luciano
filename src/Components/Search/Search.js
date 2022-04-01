@@ -85,6 +85,7 @@ function Search() {
         type="text"
         data-testid="search-input"
         placeholder="Pesquisar"
+        value={ searchValue }
         onChange={ handleSearchValue }
       />
       <ButtonGroup>
