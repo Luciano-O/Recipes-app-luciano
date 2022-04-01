@@ -20,4 +20,16 @@ export async function getRandomRecipe(siteValue) {
   return json;
 }
 
+export async function getNationalities() {
+  const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+  const json = await response.json();
+  return json;
+}
+
+export async function getByNationality(area) {
+  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+  const json = await response.json();
+  return json;
+}
+
 export default getRecipes;
