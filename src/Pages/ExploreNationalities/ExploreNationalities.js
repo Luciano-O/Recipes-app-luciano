@@ -37,7 +37,6 @@ function ExploreNationalities() {
     getItems();
   }, [nationality]);
 
-
   function onInputChange({ target }) {
     const { value } = target;
 
@@ -76,18 +75,20 @@ function ExploreNationalities() {
         </select>
       </div>
 
-      {recipesByNationality?.map(({ strMealThumb, strMeal, idMeal }, index) => (
-        <Link to={`/foods/${idMeal}`} key={idMeal}>
-          <Card
-            key={ index }
-            datatestRecipeCard={ `${index}-recipe-card` }
-            datatestCardImage={ `${index}-card-img` }
-            datatestCardName={ `${index}-card-name` }
-            thumb={ strMealThumb }
-            title={ strMeal }
-          />
-        </Link>
-      ))} 
+      {recipesByNationality && recipesByNationality.map(
+        ({ strMealThumb, strMeal, idMeal }, index) => (
+          <Link to={ `/foods/${idMeal}` } key={ idMeal }>
+            <Card
+              key={ index }
+              datatestRecipeCard={ `${index}-recipe-card` }
+              datatestCardImage={ `${index}-card-img` }
+              datatestCardName={ `${index}-card-name` }
+              thumb={ strMealThumb }
+              title={ strMeal }
+            />
+          </Link>
+        ),
+      )}
 
       <FooterMenu />
     </div>
