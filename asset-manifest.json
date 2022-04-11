@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Recipes-app-luciano/static/css/main.5b2147b0.css",
+    "main.js": "/Recipes-app-luciano/static/js/main.90251b79.js",
+    "static/media/exploreIcon.svg": "/Recipes-app-luciano/static/media/exploreIcon.7cbf9489ff7f6a05ac1079491d47a12f.svg",
+    "static/media/mealIcon.svg": "/Recipes-app-luciano/static/media/mealIcon.93ccfec969f850b76b23d712c5364a37.svg",
+    "static/media/shareIcon.svg": "/Recipes-app-luciano/static/media/shareIcon.0162aa71578ef591eb531dcb30801f1f.svg",
+    "static/media/profileIcon.svg": "/Recipes-app-luciano/static/media/profileIcon.27392b79560b07e515b2115585e4fc34.svg",
+    "static/media/whiteHeartIcon.svg": "/Recipes-app-luciano/static/media/whiteHeartIcon.6690d94e688d445712c855c7ded7389b.svg",
+    "static/media/searchIcon.svg": "/Recipes-app-luciano/static/media/searchIcon.361eec656b197de33ae9ee000c69601a.svg",
+    "static/media/blackHeartIcon.svg": "/Recipes-app-luciano/static/media/blackHeartIcon.f4563148a53687f9befe2ce741dfdedb.svg",
+    "static/media/drinkIcon.svg": "/Recipes-app-luciano/static/media/drinkIcon.1893b8edb4ab2acd4419bcc4046f84b9.svg",
+    "index.html": "/Recipes-app-luciano/index.html",
+    "main.5b2147b0.css.map": "/Recipes-app-luciano/static/css/main.5b2147b0.css.map",
+    "main.90251b79.js.map": "/Recipes-app-luciano/static/js/main.90251b79.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b2147b0.css",
+    "static/js/main.90251b79.js"
+  ]
+}
