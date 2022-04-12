@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/your-app-name/static/css/main.85bf6452.css",
-    "main.js": "/your-app-name/static/js/main.84d8a910.js",
-    "static/media/exploreIcon.svg": "/your-app-name/static/media/exploreIcon.7cbf9489ff7f6a05ac1079491d47a12f.svg",
-    "static/media/mealIcon.svg": "/your-app-name/static/media/mealIcon.93ccfec969f850b76b23d712c5364a37.svg",
-    "static/media/shareIcon.svg": "/your-app-name/static/media/shareIcon.0162aa71578ef591eb531dcb30801f1f.svg",
-    "static/media/profileIcon.svg": "/your-app-name/static/media/profileIcon.27392b79560b07e515b2115585e4fc34.svg",
-    "static/media/whiteHeartIcon.svg": "/your-app-name/static/media/whiteHeartIcon.6690d94e688d445712c855c7ded7389b.svg",
-    "static/media/searchIcon.svg": "/your-app-name/static/media/searchIcon.361eec656b197de33ae9ee000c69601a.svg",
-    "static/media/blackHeartIcon.svg": "/your-app-name/static/media/blackHeartIcon.f4563148a53687f9befe2ce741dfdedb.svg",
-    "static/media/drinkIcon.svg": "/your-app-name/static/media/drinkIcon.1893b8edb4ab2acd4419bcc4046f84b9.svg",
-    "static/media/undraw_cooking_lyxy.svg": "/your-app-name/static/media/undraw_cooking_lyxy.ce590c54407c611fea7fc57e8a9a6490.svg",
-    "static/media/fish-fins-solid.svg": "/your-app-name/static/media/fish-fins-solid.142021d6d92da6129245.svg",
-    "index.html": "/your-app-name/index.html",
-    "main.85bf6452.css.map": "/your-app-name/static/css/main.85bf6452.css.map",
-    "main.84d8a910.js.map": "/your-app-name/static/js/main.84d8a910.js.map"
+    "main.css": "/Recipes-app-luciano/static/css/main.cda8dee2.css",
+    "main.js": "/Recipes-app-luciano/static/js/main.fa061ce7.js",
+    "static/media/exploreIcon.svg": "/Recipes-app-luciano/static/media/exploreIcon.7cbf9489ff7f6a05ac1079491d47a12f.svg",
+    "static/media/mealIcon.svg": "/Recipes-app-luciano/static/media/mealIcon.93ccfec969f850b76b23d712c5364a37.svg",
+    "static/media/shareIcon.svg": "/Recipes-app-luciano/static/media/shareIcon.0162aa71578ef591eb531dcb30801f1f.svg",
+    "static/media/profileIcon.svg": "/Recipes-app-luciano/static/media/profileIcon.27392b79560b07e515b2115585e4fc34.svg",
+    "static/media/whiteHeartIcon.svg": "/Recipes-app-luciano/static/media/whiteHeartIcon.6690d94e688d445712c855c7ded7389b.svg",
+    "static/media/searchIcon.svg": "/Recipes-app-luciano/static/media/searchIcon.361eec656b197de33ae9ee000c69601a.svg",
+    "static/media/blackHeartIcon.svg": "/Recipes-app-luciano/static/media/blackHeartIcon.f4563148a53687f9befe2ce741dfdedb.svg",
+    "static/media/drinkIcon.svg": "/Recipes-app-luciano/static/media/drinkIcon.1893b8edb4ab2acd4419bcc4046f84b9.svg",
+    "static/media/undraw_cooking_lyxy.svg": "/Recipes-app-luciano/static/media/undraw_cooking_lyxy.ce590c54407c611fea7fc57e8a9a6490.svg",
+    "index.html": "/Recipes-app-luciano/index.html",
+    "static/media/fish-fins-solid.svg": "/Recipes-app-luciano/static/media/fish-fins-solid.142021d6d92da6129245.svg",
+    "main.cda8dee2.css.map": "/Recipes-app-luciano/static/css/main.cda8dee2.css.map",
+    "main.fa061ce7.js.map": "/Recipes-app-luciano/static/js/main.fa061ce7.js.map"
   },
   "entrypoints": [
-    "static/css/main.85bf6452.css",
-    "static/js/main.84d8a910.js"
+    "static/css/main.cda8dee2.css",
+    "static/js/main.fa061ce7.js"
   ]
 }
