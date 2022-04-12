@@ -1,3 +1,70 @@
-* {
-  margin: 0;
+@media ( max-width : 480px ) {
+
+  .NationalitiesCard {
+    align-items: flex-start;
+    color: #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    height: autp;
+    justify-content: space-around;
+    margin-bottom: 3em;
+    text-align: center;
+  }
+
+  .NationalitiesPage {
+    background-color: #eff0f3;
+  }
+
+  .NationalitiesSelect {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  .NationalitiesSelect select {
+    border-radius: 8px;
+    font-family: Heebo , sans-serif;
+    height: 2em;
+    padding-left: 0.7em;
+    width: 50%;
+  }
+
+  .NationalitiesSelect select::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.NationalitiesCard {
+  align-items: flex-start;
+  color: #2a2a2a;
+  display: flex;
+  flex-wrap: wrap;
+  height: autp;
+  justify-content: space-around;
+  margin-bottom: 3em;
+  text-align: center;
+}
+
+.NationalitiesPage {
+  background-color: #eff0f3;
+}
+
+.NationalitiesSelect {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.NationalitiesSelect select {
+  border-radius: 8px;
+  font-family: Heebo , sans-serif;
+  height: 2em;
+  padding-left: 0.7em;
+  width: 50%;
+}
+
+.NationalitiesSelect select::-webkit-scrollbar {
+  display: none;
 }

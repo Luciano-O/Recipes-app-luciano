@@ -1,15 +1,160 @@
+@media ( max-width : 480px ) {
+
+  .LoginBodyDiv {
+    align-items: center;
+    background-color: #eff0f3;
+    display: flex;
+    flex-direction: column;
+    font-family: Heebo , sans-serif;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .Logo img {
+    height: 15em;
+    width: 15em;
+  }
+
+  .Logo h1 {
+    color: #ff8e3c;
+    font-family: Heebo , sans-serif;
+    text-align: center;
+  }
+
+  .LoginDiv {
+    display: flex;
+    flex-direction: column;
+    height: 18em;
+    justify-content: center;
+    padding: 1em;
+    width: 18em;
+  }
+
+  .LoginDiv button {
+    background-color: #ff8e3c;
+    border-color: transparent;
+    border-radius: 10px;
+    box-shadow: none;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 2em;
+    margin-top: 2em;
+  }
+
+  .LoginDiv button:active {
+    background-color: #ff8e3c;
+    border-color: transparent;
+    border-radius: 10px;
+    box-shadow: none;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 2em;
+    margin-top: 2em;
+  }
+
+  .LoginDiv button:focus {
+    background-color: #ff8e3c;
+    border-color: transparent;
+    border-radius: 10px;
+    box-shadow: none;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 2em;
+    margin-top: 2em;
+  }
+
+  .LoginDiv button:hover {
+    background-color: #ff8e3c;
+    border-color: transparent;
+    border-radius: 10px;
+    box-shadow: none;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 2em;
+    margin-top: 2em;
+  }
+
+  .LoginDiv button:disabled {
+    background-color: #f8be94;
+    border-color: transparent;
+    border-radius: 10px;
+    color: #676b69;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 2em;
+  }
+
+  .LoginDiv span {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px 0 0 10px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    width: 2.5em;
+  }
+
+  .LoginDiv input {
+    align-items: center;
+    border-radius: 10px;
+    color: #0d0d0d;
+    display: flex;
+    font-family: Heebo , sans-serif;
+    justify-content: center;
+    width: 2.5em;
+  }
+
+  .LoginDiv input:focus {
+    border-color: #0d0d0d;
+    box-shadow: none;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+  }
+
+  .LoginDiv input:after {
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+  }
+
+  .LoginDiv input::placeholder {
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+  }
+}
+
 .LoginBodyDiv {
   align-items: center;
-  background-color: #ffdb6b;
+  background-color: #eff0f3;
   display: flex;
+  flex-direction: column;
+  font-family: Heebo , sans-serif;
   height: 100vh;
   justify-content: center;
   width: 100vw;
 }
 
+.Logo img {
+  height: 15em;
+  width: 15em;
+}
+
+.Logo h1 {
+  color: #ff8e3c;
+  font-family: Heebo , sans-serif;
+  text-align: center;
+}
+
 .LoginDiv {
-  border: 5px solid #021e10;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   height: 18em;
@@ -19,26 +164,73 @@
 }
 
 .LoginDiv button {
-  background-color: #021e10;
+  background-color: #ff8e3c;
+  border-color: transparent;
   border-radius: 10px;
-  color: #ffdb6b;
+  box-shadow: none;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
   font-size: 20px;
+  font-weight: 600;
   height: 2em;
+  margin-top: 2em;
+}
+
+.LoginDiv button:active {
+  background-color: #ff8e3c;
+  border-color: transparent;
+  border-radius: 10px;
+  box-shadow: none;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 2em;
+  margin-top: 2em;
+}
+
+.LoginDiv button:focus {
+  background-color: #ff8e3c;
+  border-color: transparent;
+  border-radius: 10px;
+  box-shadow: none;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 2em;
+  margin-top: 2em;
+}
+
+.LoginDiv button:hover {
+  background-color: #ff8e3c;
+  border-color: transparent;
+  border-radius: 10px;
+  box-shadow: none;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 2em;
+  margin-top: 2em;
 }
 
 .LoginDiv button:disabled {
-  background-color: #444645;
+  background-color: #f8be94;
+  border-color: transparent;
   border-radius: 10px;
-  color: #313332;
+  color: #676b69;
+  font-family: Heebo , sans-serif;
   font-size: 20px;
+  font-weight: 600;
   height: 2em;
 }
 
 .LoginDiv span {
   align-items: center;
-  background-color: #021e10;
+  background-color: white;
   border-radius: 10px 0 0 10px;
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
   width: 2.5em;
@@ -46,24 +238,27 @@
 
 .LoginDiv input {
   align-items: center;
-  background-color: #021e10;
   border-radius: 10px;
-  color: #ffdb6b;
+  color: #0d0d0d;
   display: flex;
+  font-family: Heebo , sans-serif;
   justify-content: center;
   width: 2.5em;
 }
 
 .LoginDiv input:focus {
-  background-color: #021e10;
-  color: #ffdb6b;
+  border-color: #0d0d0d;
+  box-shadow: none;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
 }
 
 .LoginDiv input:after {
-  background-color: #021e10;
-  color: #ffdb6b;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
 }
 
 .LoginDiv input::placeholder {
-  color: #ffdb6b;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
 }

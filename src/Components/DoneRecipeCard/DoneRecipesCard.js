@@ -28,8 +28,7 @@ function DoneRecipeCard({ filter }) {
     }
   }
   return (
-    <div className={ styles.DoneRecipeCard }>
-      ;
+    <div className={ styles.DoneRecipeCardBody }>
       {doneRecipeInfo && doneRecipeInfo.map((recipe, index) => (
         <div
           key={ index }
@@ -84,7 +83,8 @@ function DoneRecipeCard({ filter }) {
           </div>
         </div>
       ))}
-    </div>);
+    </div>
+  );
 }
 
 DoneRecipeCard.propTypes = {

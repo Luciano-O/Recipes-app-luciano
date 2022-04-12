@@ -1,4 +1,180 @@
-img {
-  height: 100px;
-  width: 100px;
+@media ( max-width : 480px ) {
+
+  .DoneRecipeCardBody {
+    align-items: center;
+    background-color: #eff0f3;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .CardImgDiv img {
+    border-radius: 0.5em 0 0 0.5em;
+    height: 100%;
+    width: 100%;
+  }
+
+  .CardInfoDiv button {
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+  }
+
+  .CardInfoDiv button img {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .CardInfoDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    position: relative;
+    width: 60%;
+  }
+
+  .CardDiv {
+    background-color: white;
+    border: 0;
+    border-radius: 0.5em;
+    box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+    display: flex;
+    margin-bottom: 1.5em;
+    width: 95vw;
+  }
+
+  .CardImgDiv {
+    width: 40%;
+  }
+
+  .CardInfoDiv p {
+    font-family: Heebo , sans-serif;
+    margin: 0;
+  }
+
+  .CardInfoCategoryText {
+    font-weight: 200;
+  }
+
+  .CardInfoTitleText {
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    top: 30px;
+  }
+
+  .CardInfoDateText {
+    font-weight: 400;
+    position: absolute;
+    top: 60px;
+  }
+
+  .CardTagsDiv {
+    align-items: center;
+    bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+    width: 90%;
+  }
+
+  .CardTagsDiv p {
+    background-color: #ff8e3c;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-weight: 300;
+    padding: 5px;
+  }
+}
+
+.DoneRecipeCardBody {
+  align-items: center;
+  background-color: #eff0f3;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.CardImgDiv img {
+  border-radius: 0.5em 0 0 0.5em;
+  height: 100%;
+  width: 100%;
+}
+
+.CardInfoDiv button {
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+
+.CardInfoDiv button img {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.CardInfoDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  position: relative;
+  width: 60%;
+}
+
+.CardDiv {
+  background-color: white;
+  border: 0;
+  border-radius: 0.5em;
+  box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+  display: flex;
+  margin-bottom: 1.5em;
+  width: 95vw;
+}
+
+.CardImgDiv {
+  width: 40%;
+}
+
+.CardInfoDiv p {
+  font-family: Heebo , sans-serif;
+  margin: 0;
+}
+
+.CardInfoCategoryText {
+  font-weight: 200;
+}
+
+.CardInfoTitleText {
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  top: 30px;
+}
+
+.CardInfoDateText {
+  font-weight: 400;
+  position: absolute;
+  top: 60px;
+}
+
+.CardTagsDiv {
+  align-items: center;
+  bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: absolute;
+  width: 90%;
+}
+
+.CardTagsDiv p {
+  background-color: #ff8e3c;
+  border-radius: 30px;
+  box-sizing: border-box;
+  font-weight: 300;
+  padding: 5px;
 }

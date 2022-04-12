@@ -1,3 +1,34 @@
-* {
-  padding: 0;
+@media ( max-width : 480px ) {
+
+  .card_title {
+    font-family: Heebo , sans-serif;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .Card {
+    border-radius: 0.5em;
+    box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+    margin-bottom: 1em;
+  }
+
+  .Card img {
+    border-radius: 0.5em 0.5em 0 0;
+  }
+}
+
+.card_title {
+  font-family: Heebo , sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+.Card {
+  border-radius: 0.5em;
+  box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+  margin-bottom: 1em;
+}
+
+.Card img {
+  border-radius: 0.5em 0.5em 0 0;
 }

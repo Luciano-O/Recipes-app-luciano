@@ -1,3 +1,32 @@
-* {
-  padding: 0;
+@media ( max-width : 480px ) {
+
+  .explore_ingred_container {
+    background-color: #eff0f3;
+  }
+
+  .IngredientsCards {
+    align-items: flex-start;
+    color: #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    height: autp;
+    justify-content: space-around;
+    margin-bottom: 3em;
+    text-align: center;
+  }
+}
+
+.explore_ingred_container {
+  background-color: #eff0f3;
+}
+
+.IngredientsCards {
+  align-items: flex-start;
+  color: #2a2a2a;
+  display: flex;
+  flex-wrap: wrap;
+  height: autp;
+  justify-content: space-around;
+  margin-bottom: 3em;
+  text-align: center;
 }

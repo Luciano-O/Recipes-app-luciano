@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { faMartiniGlass, faBowlRice, faCompass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button } from 'react-bootstrap';
 import styles from './styles.module.css';
 import drinkIcon from '../../images/drinkIcon.svg';
 import exploreIcon from '../../images/exploreIcon.svg';
@@ -15,35 +17,47 @@ function FooterMenu() {
 
   return (
     <footer data-testid="footer" className={ styles.footer_menu }>
-      <button
+      <Button
+        variant="none"
         type="button"
-        aria-label="Open drinks"
+        className={ styles.DrinkBtn }
+        text="Drink"
+        name="drink-btn"
         data-testid="drinks-bottom-btn"
-        src={ drinkIcon }
+        aria-label="Open Drinks"
         onClick={ () => handleNavigation('/drinks') }
+        src={ drinkIcon }
       >
-        <img src={ drinkIcon } alt="imagem de um drink" />
-      </button>
+        <FontAwesomeIcon icon={ faMartiniGlass } />
+      </Button>
 
-      <button
+      <Button
+        variant="none"
         type="button"
+        className={ styles.ExploreBtn }
+        text="Explore"
+        name="explore-btn"
         data-testid="explore-bottom-btn"
         aria-label="Open explore"
-        src={ exploreIcon }
         onClick={ () => handleNavigation('/explore') }
+        src={ exploreIcon }
       >
-        <img src={ exploreIcon } alt="imagem de explorar" />
-      </button>
+        <FontAwesomeIcon icon={ faCompass } />
+      </Button>
 
-      <button
+      <Button
+        variant="none"
         type="button"
+        className={ styles.FoodBtn }
+        text="Foods"
+        name="food-btn"
         data-testid="food-bottom-btn"
         aria-label="Open foods"
         src={ mealIcon }
         onClick={ () => handleNavigation('/foods') }
       >
-        <img src={ mealIcon } alt="imagem de um talhere" />
-      </button>
+        <FontAwesomeIcon icon={ faBowlRice } />
+      </Button>
     </footer>
   );
 }

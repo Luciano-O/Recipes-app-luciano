@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FavoriteButton from '../../Components/FavoriteButton/FavoriteButton';
 import ProgressDetails from '../../Components/ProgressDetails/ProgressDetails';
-import ShareButton from '../../Components/ShareButton/ShareButton';
 import getRecipes from '../../Helpers/API';
 
 // 52844
@@ -58,64 +56,40 @@ function RecipeProgress() {
   }, []);
 
   const mealsInfo = () => (
-    <>
-      <FavoriteButton
-        id={ recipeId }
-        type="food"
-        nationality={ recipe.strArea }
-        category={ recipe.strCategory }
-        alcoholicOrNot=""
-        name={ recipe.strMeal }
-        image={ recipe.strMealThumb }
-      />
-      <ProgressDetails
-        img={ recipe.strMealThumb }
-        title={ recipe.strMeal }
-        categoryStr={ recipe.strCategory }
-        type="meals"
-        nationality={ recipe.strArea }
-        category={ recipe.strCategory }
-        alcoholicOrNot=""
-        id={ recipeId }
-        recipeIngredients={ ingredients }
-        recipeQuants={ ingredientsQuant }
-        instructions={ recipe.strInstructions }
-        tags={ recipe.strTags }
-      />
-    </>
+    <ProgressDetails
+      img={ recipe.strMealThumb }
+      title={ recipe.strMeal }
+      categoryStr={ recipe.strCategory }
+      type="meals"
+      nationality={ recipe.strArea }
+      category={ recipe.strCategory }
+      alcoholicOrNot=""
+      id={ recipeId }
+      recipeIngredients={ ingredients }
+      recipeQuants={ ingredientsQuant }
+      instructions={ recipe.strInstructions }
+      tags={ recipe.strTags }
+    />
   );
 
   const drinksInfo = () => (
-    <>
-      <FavoriteButton
-        id={ recipeId }
-        type="drink"
-        nationality={ recipe.strArea ? recipe.strArea : '' }
-        category={ recipe.strCategory }
-        alcoholicOrNot={ recipe.strAlcoholic }
-        name={ recipe.strDrink }
-        image={ recipe.strDrinkThumb }
-      />
-      <ProgressDetails
-        img={ recipe.strDrinkThumb }
-        title={ recipe.strDrink }
-        categoryStr={ recipe.strCategory }
-        type="cocktails"
-        nationality={ recipe.strArea ? recipe.strArea : '' }
-        alcoholicOrNot={ recipe.strAlcoholic }
-        id={ recipeId }
-        recipeIngredients={ ingredients }
-        recipeQuants={ ingredientsQuant }
-        instructions={ recipe.strInstructions }
-        tags={ recipe.strTags }
-      />
-    </>
+    <ProgressDetails
+      img={ recipe.strDrinkThumb }
+      title={ recipe.strDrink }
+      categoryStr={ recipe.strCategory }
+      type="cocktails"
+      nationality={ recipe.strArea ? recipe.strArea : '' }
+      alcoholicOrNot={ recipe.strAlcoholic }
+      id={ recipeId }
+      recipeIngredients={ ingredients }
+      recipeQuants={ ingredientsQuant }
+      instructions={ recipe.strInstructions }
+      tags={ recipe.strTags }
+    />
   );
 
   return (
     <div>
-      <h1>RecipeProgress</h1>
-      <ShareButton recipeLink={ `http://localhost:3000/${type}/${recipeId}` } />
       {recipe && (thisType === 'meal' ? mealsInfo() : drinksInfo())}
     </div>
   );

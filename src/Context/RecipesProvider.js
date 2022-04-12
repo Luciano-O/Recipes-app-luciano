@@ -10,6 +10,7 @@ function RecipesProvider({ children }) {
   const [searchValue, setSearchValue] = useState('');
   const [first12, setFirst12] = useState([]);
   const [ingredientsApi, setIngredientsApi] = useState({});
+  const [recommended, setRecommended] = useState([]);
   const [recipesByIngridients, setRecipesByIngridients] = useState('');
 
   const objValue = {
@@ -29,6 +30,8 @@ function RecipesProvider({ children }) {
     setIngredientsApi,
     recipesByIngridients,
     setRecipesByIngridients,
+    recommended,
+    setRecommended,
   };
 
   return (

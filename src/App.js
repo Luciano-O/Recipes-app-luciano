@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './customBootstrap.scss';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import Foods from './Pages/Foods/Foods';

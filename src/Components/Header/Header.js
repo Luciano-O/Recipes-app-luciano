@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import searchIcon from '../../images/searchIcon.svg';
 import profileIcon from '../../images/profileIcon.svg';
 import styles from './styles.module.css';
@@ -16,23 +19,23 @@ function Header(props) {
 
   const { title, searchBtnExists } = props;
   const searchButton = (
-    <button
+    <Button
+      variant="none"
       type="button"
-      className={ styles.headerBtn }
       text="Search"
       name="search-btn"
       data-testid="search-top-btn"
       onClick={ () => { toggleIsSearchInputVisable(!isSearchInputVisible); } }
       src={ searchIcon }
-      alt="search-icon"
     >
-      <img src={ searchIcon } alt="search-icon" />
-    </button>
+      <FontAwesomeIcon icon={ faMagnifyingGlass } />
+    </Button>
   );
   return (
-    <>
+    <header className={ styles.header_body }>
       <div className={ styles.header_container }>
-        <button
+        <Button
+          variant="none"
           type="button"
           className={ styles.headerBtn }
           text="Profile"
@@ -42,18 +45,34 @@ function Header(props) {
           src={ profileIcon }
           alt="profile-icon"
         >
-          <img src={ profileIcon } alt="profile-icon" />
-        </button>
-        <h1 data-testid="page-title">
+          <FontAwesomeIcon icon={ faUser } />
+        </Button>
+        <h1
+          data-testid="page-title"
+          className={ styles.headerTitle }
+        >
           {' '}
           {title}
           {' '}
         </h1>
         {!searchBtnExists
-        && searchButton}
+          ? searchButton
+          : (
+            <Button
+              variant="none"
+              type="button"
+              className={ styles.headerBtn }
+              text="Profile"
+              name="profile-btn"
+              data-testid="profile-top-btn"
+              onClick={ () => handleClick() }
+              src={ profileIcon }
+              alt="profile-icon"
+              disabled
+            />)}
       </div>
       <div>{isSearchInputVisible && <Search props={ { ...props } } />}</div>
-    </>
+    </header>
   );
 }
 Header.defaultProps = {

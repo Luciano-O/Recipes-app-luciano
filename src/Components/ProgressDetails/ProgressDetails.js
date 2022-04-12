@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { addDoneRecipe, getProgress,
   saveInProgressRecipe } from '../../Helpers/localStorageSaves';
-import Button from '../Button/Button';
+import ButtonComponent from '../Button/Button';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import ShareButton from '../ShareButton/ShareButton';
+import styles from './styles.module.css';
 
 function ProgressDetails(props) {
   const {
@@ -67,39 +70,82 @@ function ProgressDetails(props) {
   };
 
   return (
-    <div>
-      <img
-        src={ img }
-        alt={ title }
-        data-testid="recipe-photo"
-      />
-      <h2 data-testid="recipe-title">
-        {title}
-      </h2>
-      <h3 data-testid="recipe-category">
-        {categoryStr}
-      </h3>
-      <ol>
-        { recipeIngredients.map((item, index) => (
-          <li key={ index } data-testid={ `${index}-ingredient-step` }>
-            <input
-              type="checkbox"
-              name={ `item ${index}` }
-              defaultChecked={ progressToSave && progressToSave.includes(item) }
-              onChange={ () => handleClick(progressToSave, item) }
+    <div className={ styles.RecipeProgressPage }>
+      <div className={ styles.RecipeHeader }>
+        <div className={ styles.RecipePhoto }>
+          <img
+            src={ img }
+            alt={ title }
+            data-testid="recipe-photo"
+          />
+        </div>
+        <div className={ styles.RecipeProgressInfo }>
+          <h1
+            data-testid="recipe-title"
+          >
+            {title}
+          </h1>
+          <h3
+            data-testid="recipe-category"
+          >
+            {categoryStr}
+          </h3>
+          <div className={ styles.RecipeProgressInfoButtons }>
+            <FavoriteButton
+              id={ id }
+              type={ type }
+              nationality={ nationality }
+              category={ categoryStr }
+              alcoholicOrNot={ alcoholicOrNot }
+              name={ title }
+              image={ img }
             />
-            <label htmlFor={ `item ${index}` }>{`${item} ${recipeQuants[index]}`}</label>
-          </li>)) }
-      </ol>
-      <p data-testid="instructions">
-        {instructions}
-      </p>
-      <Button
-        text="Finish recipe"
-        dataTest="finish-recipe-btn"
-        disabled={ progressToSave.length !== recipeIngredients.length }
-        onClick={ handleClickFinish }
-      />
+            <ShareButton
+              recipeLink={ `http://localhost:3000/${type}/${id}` }
+            />
+          </div>
+        </div>
+      </div>
+      <div className={ styles.RecipeProgressMain }>
+        <div className={ styles.RecipeProgressIngredients }>
+          <h1>Ingredients</h1>
+          <ol>
+            { recipeIngredients.map((item, index) => (
+              <li key={ index } data-testid={ `${index}-ingredient-step` }>
+                <input
+                  type="checkbox"
+                  name={ `item ${index}` }
+                  defaultChecked={ progressToSave && progressToSave.includes(item) }
+                  onChange={ () => handleClick(progressToSave, item) }
+                />
+                <label
+                  htmlFor={ `item ${index}` }
+                >
+                  {`${item} ${recipeQuants[index]}`}
+                </label>
+              </li>)) }
+          </ol>
+        </div>
+        <div className={ styles.RecipeDetailsInstructionsDiv }>
+          <h1>Instructions</h1>
+          <div
+            data-testid="instructions"
+            className={ styles.RecipeProgressInstructions }
+          >
+            {instructions}
+          </div>
+        </div>
+      </div>
+      <div className={ styles.DoneRecipeButtonDiv }>
+        <ButtonComponent
+          className={ styles.DoneRecipeButton }
+          text="Finish recipe"
+          dataTest="finish-recipe-btn"
+          disabled={ progressToSave.length !== recipeIngredients.length }
+          onClick={ handleClickFinish }
+          variant="orange2"
+        />
+      </div>
     </div>
   );
 }

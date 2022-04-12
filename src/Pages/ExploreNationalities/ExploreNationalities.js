@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
 import getRecipes, { getNationalities, getByNationality } from '../../Helpers/API';
-import Card from '../../Components/Card/Card';
+import CardComponent from '../../Components/Card/Card';
+import styles from './styles.module.css';
 
 function ExploreNationalities() {
+  const history = useHistory();
   const [nationality, setNationality] = useState('All');
   const [nationalities, setNationalities] = useState([]);
   const [recipesByNationality, setRecipesByNationality] = useState([]);
@@ -43,12 +45,17 @@ function ExploreNationalities() {
     setNationality(value);
   }
 
+  function handleClick(id) {
+    history.push(`/foods/${id}`);
+  }
+
   return (
-    <div>
+    <div className={ styles.NationalitiesPage }>
       <Header title="Explore Nationalities" />
 
-      <div>
+      <div className={ styles.NationalitiesSelect }>
         <select
+          className={ styles.Select }
           id="nationality"
           name="nationality"
           value={ nationality }
@@ -56,6 +63,7 @@ function ExploreNationalities() {
           data-testid="explore-by-nationality-dropdown"
         >
           <option
+            className={ styles.Option }
             key="All"
             data-testid="All-option"
             value="All"
@@ -65,6 +73,7 @@ function ExploreNationalities() {
           {nationalities
             .map((option, index) => (
               <option
+                className={ styles.Option }
                 key={ index }
                 data-testid={ `${option.strArea}-option` }
                 value={ option.strArea }
@@ -75,20 +84,21 @@ function ExploreNationalities() {
         </select>
       </div>
 
-      {recipesByNationality && recipesByNationality.map(
-        ({ strMealThumb, strMeal, idMeal }, index) => (
-          <Link to={ `/foods/${idMeal}` } key={ idMeal }>
-            <Card
+      <div className={ styles.NationalitiesCard }>
+        {recipesByNationality && recipesByNationality.map(
+          ({ strMealThumb, strMeal, idMeal }, index) => (
+            <CardComponent
               key={ index }
+              onClick={ () => handleClick(idMeal) }
               datatestRecipeCard={ `${index}-recipe-card` }
               datatestCardImage={ `${index}-card-img` }
               datatestCardName={ `${index}-card-name` }
               thumb={ strMealThumb }
               title={ strMeal }
             />
-          </Link>
-        ),
-      )}
+          ),
+        )}
+      </div>
 
       <FooterMenu />
     </div>

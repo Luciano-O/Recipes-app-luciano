@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import RecipesProvider from './Context/RecipesProvider';
 
 ReactDOM.render(
-  <BrowserRouter basename={ process.env.PUBLIC_URL }>
+  <BrowserRouter>
     <RecipesProvider>
       <App />
     </RecipesProvider>

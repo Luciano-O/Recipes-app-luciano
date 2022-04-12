@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import styles from './styles.module.css';
 import Header from '../../Components/Header/Header';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
-import Button from '../../Components/Button/Button';
+import ButtonComponent from '../../Components/Button/Button';
 import { getEmail } from '../../Helpers/localStorageSaves';
 
 function Profile() {
@@ -28,35 +27,37 @@ function Profile() {
   }
 
   return (
-    <div>
+    <div className={ styles.ProfilePage }>
       <Header title="Profile" searchBtnExists />
 
-      <div className={ styles.container_profile }>
+      <div className={ styles.ProfileContainer }>
         <h1 data-testid="profile-email">{ email }</h1>
 
-        <Button
-          className="styles.testButton"
-          text="Done Recipes"
-          name="done"
-          dataTest="profile-done-btn"
-          onClick={ () => handleNavigation('/done-recipes') }
-        />
+        <div className={ styles.ProfileButtons }>
+          <ButtonComponent
+            className="styles.testButton"
+            text="Done Recipes"
+            name="done"
+            dataTest="profile-done-btn"
+            onClick={ () => handleNavigation('/done-recipes') }
+          />
 
-        <Button
-          className="styles.testButton"
-          text="Favorite Recipes"
-          name="favorite"
-          dataTest="profile-favorite-btn"
-          onClick={ () => handleNavigation('/favorite-recipes') }
-        />
+          <ButtonComponent
+            className="styles.testButton"
+            text="Favorite Recipes"
+            name="favorite"
+            dataTest="profile-favorite-btn"
+            onClick={ () => handleNavigation('/favorite-recipes') }
+          />
 
-        <Button
-          className="styles.testButton"
-          text="Logout"
-          name="logout"
-          dataTest="profile-logout-btn"
-          onClick={ () => handleNavigation('/') }
-        />
+          <ButtonComponent
+            className="styles.testButton"
+            text="Logout"
+            name="logout"
+            dataTest="profile-logout-btn"
+            onClick={ () => handleNavigation('/') }
+          />
+        </div>
       </div>
       <FooterMenu />
     </div>

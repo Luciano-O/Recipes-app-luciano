@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, InputGroup } from 'react-bootstrap';
-import Button from '../../Components/Button/Button';
+import ButtonComponent from '../../Components/Button/Button';
 import { saveEmail,
   saveTokenDrink,
   saveTokenFood } from '../../Helpers/localStorageSaves';
 import styles from './styles.module.css';
+import logo from '../../images/undraw_cooking_lyxy.svg';
+// import logo2 from '../../images/undraw_breakfast_psiw.svg';
 
 function Login(props) {
   const [email, setEmail] = useState('');
@@ -37,9 +41,15 @@ function Login(props) {
 
   return (
     <div className={ styles.LoginBodyDiv }>
+      <div className={ styles.Logo }>
+        <img src={ logo } alt="cooking logo" />
+        <h1>BAKED</h1>
+      </div>
       <div className={ styles.LoginDiv }>
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">&#9993;</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1">
+            <FontAwesomeIcon icon={ faEnvelope } />
+          </InputGroup.Text>
           <FormControl
             data-testid="email-input"
             value={ email }
@@ -51,7 +61,9 @@ function Login(props) {
           />
         </InputGroup>
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">&#9919;</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1">
+            <FontAwesomeIcon icon={ faLock } />
+          </InputGroup.Text>
           <FormControl
             data-testid="password-input"
             value={ password }
@@ -62,13 +74,14 @@ function Login(props) {
             aria-describedby="basic-addon1"
           />
         </InputGroup>
-        <Button
+        <ButtonComponent
           className="styles.testButton"
           text="Enter"
           name="lalaland"
           disabled={ disabled }
           dataTest="login-submit-btn"
           onClick={ handleClick }
+          variant="orange2"
         />
       </div>
     </div>

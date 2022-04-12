@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import FooterMenu from '../../Components/FooterMenu/FooterMenu';
-import Button from '../../Components/Button/Button';
+import ButtonComponent from '../../Components/Button/Button';
 import { getRandomRecipe } from '../../Helpers/API';
 import styles from './styles.module.css';
 
@@ -38,7 +38,7 @@ function ExploreDetails({ match }) {
     }
   }
 
-  const nationalityBtn = (<Button
+  const nationalityBtn = (<ButtonComponent
     dataTest="explore-by-nationality"
     onClick={ () => handleClickNation('foods') }
     name="explore-by-nationality-btn"
@@ -48,28 +48,30 @@ function ExploreDetails({ match }) {
   />);
 
   return (
-    <div>
+    <div className={ styles.ExploreDetailsPage }>
       <Header
         title={ `Explore ${pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)}` }
         searchBtnExists
       />
-      <Button
-        dataTest="explore-by-ingredient"
-        onClick={ () => handleClickIngred(foodOrDrink) }
-        name="explore-by-ingredient-btn"
-        className={ styles.IngredientButton }
-        text="By Ingredient"
-        disabled={ false }
-      />
-      { pageTitle === 'foods' ? nationalityBtn : null }
-      <Button
-        dataTest="explore-surprise"
-        onClick={ () => handleClickRandom() }
-        name="explore-surprise-btn"
-        className={ styles.SurpriseButton }
-        text="Surprise me!"
-        disabled={ false }
-      />
+      <div className={ styles.ExploreDetailsButtons }>
+        <ButtonComponent
+          dataTest="explore-by-ingredient"
+          onClick={ () => handleClickIngred(foodOrDrink) }
+          name="explore-by-ingredient-btn"
+          className={ styles.IngredientButton }
+          text="By Ingredient"
+          disabled={ false }
+        />
+        { pageTitle === 'foods' ? nationalityBtn : null }
+        <ButtonComponent
+          dataTest="explore-surprise"
+          onClick={ () => handleClickRandom() }
+          name="explore-surprise-btn"
+          className={ styles.SurpriseButton }
+          text="Surprise me!"
+          disabled={ false }
+        />
+      </div>
       <FooterMenu />
     </div>
   );

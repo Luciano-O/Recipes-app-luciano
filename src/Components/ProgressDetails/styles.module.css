@@ -1,4 +1,268 @@
-.header_container {
+@media ( max-width : 480px ) {
+
+  .RecipeProgressPage {
+    background-color: #eff0f3;
+  }
+
+  .RecipeProgressInfo {
+    max-height: 8em;
+    padding-left: 1em;
+    position: relative;
+  }
+
+  .RecipeProgressInfo h1 {
+    font-family: Heebo , sans-serif;
+    font-weight: 500;
+    margin: 0;
+    width: 6em;
+  }
+
+  .RecipeProgressInfo h3 {
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .RecipeProgressInfoButtons {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+  }
+
+  .RecipeProgressInfoButtons button {
+    border: 0;
+  }
+
+  .RecipePhoto img {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+  }
+
+  .RecipePhoto {
+    height: 250px;
+    width: 100%;
+  }
+
+  .RecipeProgressMain {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .RecipeProgressMain h1 {
+    font-family: Heebo , sans-serif;
+    font-weight: 400;
+  }
+
+  .RecipeProgressMain ol {
+    background-color: white;
+    border-radius: 2em;
+    box-shadow: 0 15px 26px -12px rgb(30 30 60 / 25%);
+    list-style-type: none;
+    padding: 1em 1em 1em 1.5em;
+  }
+
+  .RecipeProgressMain ol li {
+    font-family: Heebo , sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .RecipeProgressMain ol li input {
+    margin-right: 1em;
+  }
+
+  .RecipeProgressMain ol li input:checked {
+    background-color: brown;
+  }
+
+  .RecipeDetailsInstructionsDiv {
+    margin-bottom: 10em;
+  }
+
+  .RecipeProgressInstructions {
+    background-color: white;
+    border-radius: 2em;
+    box-shadow: 0 15px 26px -12px rgb(30 30 60 / 25%);
+    padding: 1em;
+  }
+
+  .RecipeProgressInstructions p {
+    font-family: Heebo , sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .RecipeProgressInstructions p:first-letter {
+    font-size: 22px;
+    text-transform: capitalize;
+  }
+
+  .DoneRecipeButtonDiv {
+    bottom: 1em;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+  }
+
+  .DoneRecipeButton {
+    align-items: center;
+    border-radius: 10em;
+    color: #0d0d0d;
+    display: flex;
+    font-family: Heebo , sans-serif;
+    font-size: 30px;
+    height: 40px;
+    justify-content: center;
+    width: 240px;
+  }
+
+  .DoneRecipeButton:disabled {
+    align-items: center;
+    border-radius: 10em;
+    color: #0d0d0d;
+    display: flex;
+    font-family: Heebo , sans-serif;
+    font-size: 30px;
+    height: 40px;
+    justify-content: center;
+    opacity: 0;
+    width: 240px;
+  }
+}
+
+.RecipeProgressPage {
+  background-color: #eff0f3;
+}
+
+.RecipeProgressInfo {
+  max-height: 8em;
+  padding-left: 1em;
+  position: relative;
+}
+
+.RecipeProgressInfo h1 {
+  font-family: Heebo , sans-serif;
+  font-weight: 500;
+  margin: 0;
+  width: 6em;
+}
+
+.RecipeProgressInfo h3 {
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.RecipeProgressInfoButtons {
+  position: absolute;
+  right: 1em;
+  top: 0.5em;
+}
+
+.RecipeProgressInfoButtons button {
+  border: 0;
+}
+
+.RecipePhoto img {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+}
+
+.RecipePhoto {
+  height: 250px;
+  width: 100%;
+}
+
+.RecipeProgressMain {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.RecipeProgressMain h1 {
+  font-family: Heebo , sans-serif;
+  font-weight: 400;
+}
+
+.RecipeProgressMain ol {
+  background-color: white;
+  border-radius: 2em;
+  box-shadow: 0 15px 26px -12px rgb(30 30 60 / 25%);
+  list-style-type: none;
+  padding: 1em 1em 1em 1.5em;
+}
+
+.RecipeProgressMain ol li {
+  font-family: Heebo , sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.RecipeProgressMain ol li input {
+  margin-right: 1em;
+}
+
+.RecipeProgressMain ol li input:checked {
+  background-color: brown;
+}
+
+.RecipeDetailsInstructionsDiv {
+  margin-bottom: 10em;
+}
+
+.RecipeProgressInstructions {
+  background-color: white;
+  border-radius: 2em;
+  box-shadow: 0 15px 26px -12px rgb(30 30 60 / 25%);
+  padding: 1em;
+}
+
+.RecipeProgressInstructions p {
+  font-family: Heebo , sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.RecipeProgressInstructions p:first-letter {
+  font-size: 22px;
+  text-transform: capitalize;
+}
+
+.DoneRecipeButtonDiv {
+  bottom: 1em;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
+.DoneRecipeButton {
+  align-items: center;
+  border-radius: 10em;
+  color: #0d0d0d;
+  display: flex;
+  font-family: Heebo , sans-serif;
+  font-size: 30px;
+  height: 40px;
+  justify-content: center;
+  width: 240px;
+}
+
+.DoneRecipeButton:disabled {
+  align-items: center;
+  border-radius: 10em;
+  color: #0d0d0d;
+  display: flex;
+  font-family: Heebo , sans-serif;
+  font-size: 30px;
+  height: 40px;
+  justify-content: center;
+  opacity: 0;
+  width: 240px;
 }

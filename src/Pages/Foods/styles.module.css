@@ -1,3 +1,143 @@
-* {
+@media ( max-width : 480px ) {
+
+  .FoodsButtonGroup {
+    display: flex;
+    margin-bottom: 1em;
+    margin-left: 1vw;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .FoodsButtonGroup::-webkit-scrollbar {
+    display: none;
+  }
+
+  .FoodsButtonGroup button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 30px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-weight: 400;
+    margin-right: 0.3em;
+    width: auto;
+  }
+
+  .FoodsButtonGroup button:active {
+    background-color: #ff8e3c;
+    box-shadow: none;
+    color: #0d0d0d;
+  }
+
+  .FoodsButtonGroup button:focus {
+    background-color: #ff8e3c;
+    box-shadow: none;
+    color: #0d0d0d;
+  }
+
+  .FoodsCardDiv {
+    align-items: flex-start;
+    color: #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    height: 5em;
+    justify-content: space-around;
+    margin-bottom: 3em;
+    text-align: center;
+  }
+
+  .foods_container {
+    background-color: #eff0f3;
+  }
+
+  .card_title {
+    font-family: Heebo , sans-serif;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .Card {
+    border-radius: 0.5em;
+    box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+    margin-bottom: 1em;
+  }
+
+  .Card img {
+    border-radius: 0.5em 0.5em 0 0;
+  }
+}
+
+.card_title {
+  font-family: Heebo , sans-serif;
+  font-size: 34px;
+  font-weight: 800;
   margin: 0;
+}
+
+.Card p span {
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+.Card {
+  border-radius: 0.5em;
+  box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+  width: 16rem;
+}
+
+.Card img {
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.FoodsButtonGroup {
+  display: flex;
+  margin-bottom: 1em;
+  margin-left: 8vw;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 30vw;
+}
+
+.FoodsButtonGroup::-webkit-scrollbar {
+  display: none;
+}
+
+.FoodsButtonGroup button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 30px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-weight: 400;
+  margin-right: 0.3em;
+  width: auto;
+}
+
+.FoodsButtonGroup button:active {
+  background-color: #ff8e3c;
+  box-shadow: none;
+  color: #0d0d0d;
+}
+
+.FoodsButtonGroup button:focus {
+  background-color: #ff8e3c;
+  box-shadow: none;
+  color: #0d0d0d;
+}
+
+.FoodsCardDiv {
+  align-items: flex-start;
+  color: #2a2a2a;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: space-around;
+  padding-bottom: 3em;
+  text-align: center;
+}
+
+.foods_container {
+  background-color: #eff0f3;
 }

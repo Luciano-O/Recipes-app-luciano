@@ -1,6 +1,7 @@
 .meals {
   align-items: center;
   background: #0fa36b;
+  background-color: red;
   color: #464646;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,16 @@
   animation: shake 1s infinite ease;
   max-height: 80vh;
 }
+
+html {
+  background-color: #eff0f3;
+  height: 100vh;
+}
+
+body {
+  background-color: #eff0f3;
+}
+
 
 /*
 #iceLeft {

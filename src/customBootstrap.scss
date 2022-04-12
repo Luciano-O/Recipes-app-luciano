@@ -1,0 +1,11 @@
+// change the theme
+$theme-colors: (
+  'success': #63a375,
+  'warning': #e9eb87,
+  'orange': #eea36d,
+  'orange2': #ff8e3c
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss' ;
+
+//npm install node-sass --save

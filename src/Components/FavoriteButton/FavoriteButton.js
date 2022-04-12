@@ -71,9 +71,10 @@ function FavoriteButton(props) {
   );
 
   return (
-    <div>
+    <>
       {fav ? blackBtn() : whiteBtn() }
-    </div>
+      <p hidden />
+    </>
   );
 }
 

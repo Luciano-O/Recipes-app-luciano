@@ -3,6 +3,7 @@ import { ButtonGroup, ToggleButton, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import RecipesContext from '../../Context/RecipesContext';
 import getRecipes from '../../Helpers/API';
+import styles from './styles.module.css';
 
 const FIRST_LETTER = 'first-letter';
 const ALERT_MESSAGE = 'Sorry, we haven\'t found any recipes for these filters.';
@@ -79,38 +80,43 @@ function Search() {
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        data-testid="search-input"
-        placeholder="Pesquisar"
-        value={ searchValue }
-        onChange={ handleSearchValue }
-      />
-      <ButtonGroup>
+    <div className={ styles.search_container }>
+      <div className={ styles.form_container }>
+        <input
+          className={ styles.search_input }
+          type="text"
+          data-testid="search-input"
+          placeholder="Pesquisar"
+          value={ searchValue }
+          onChange={ handleSearchValue }
+        />
+        <Button
+          className={ styles.search_button }
+          variant="none"
+          data-testid="exec-search-btn"
+          onClick={ () => handleSearchClick() }
+        >
+          Search
+        </Button>
+      </div>
+      <ButtonGroup className={ styles.CheckboxesDiv }>
         {radios.map((radio, idx) => (
           <ToggleButton
             key={ idx }
             id={ `radio-${idx}` }
             type="radio"
-            variant={ idx % 1 ? 'outline-success' : 'outline-primary ' }
+            variant={ idx % 1 ? 'none' : 'orange' }
             name="radio"
             value={ radio.value }
             checked={ radioValue === radio.value }
             onChange={ (e) => setRadioValue(e.currentTarget.value) }
             data-testid={ `${radio.dataTest}-search-radio` }
+            className={ styles.Checkboxes }
           >
             {radio.name}
           </ToggleButton>
         ))}
       </ButtonGroup>
-      <Button
-        variant="primary"
-        data-testid="exec-search-btn"
-        onClick={ () => handleSearchClick() }
-      >
-        Search
-      </Button>
     </div>
 
   //     <div onChange={ onChangeValue }>

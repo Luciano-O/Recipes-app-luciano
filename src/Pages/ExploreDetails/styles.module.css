@@ -1,3 +1,134 @@
-* {
-  padding: 0;
+@media ( max-width : 480px ) {
+
+  .ExploreDetailsPage {
+    background-color: #eff0f3;
+    display: flex;
+    flex-direction: column;
+    height: 100;
+    justify-content: space-between;
+  }
+
+  .ExploreDetailsButtons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6em;
+  }
+
+  .ExploreDetailsButtons button {
+    background-color: #ff8e3c;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 3em;
+    margin-bottom: 3em;
+    width: 15em;
+  }
+
+  .ExploreDetailsButtons button:active {
+    border: 1px solid black;
+    border-radius: 50px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 3em;
+    margin-bottom: 3em;
+    width: 15em;
+  }
+
+  .ExploreDetailsButtons button:focus {
+    background-color: #ff8e3c;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 3em;
+    margin-bottom: 3em;
+    width: 15em;
+  }
+
+  .ExploreDetailsButtons button:hover {
+    background-color: #ff8e3c;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    height: 3em;
+    margin-bottom: 3em;
+    width: 15em;
+  }
+}
+
+.ExploreDetailsPage {
+  background-color: #eff0f3;
+  display: flex;
+  flex-direction: column;
+  height: 100;
+  justify-content: space-between;
+}
+
+.ExploreDetailsButtons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 6em;
+}
+
+.ExploreDetailsButtons button {
+  background-color: #ff8e3c;
+  border: 1px solid black;
+  border-radius: 50px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 3em;
+  margin-bottom: 3em;
+  width: 15em;
+}
+
+.ExploreDetailsButtons button:active {
+  border: 1px solid black;
+  border-radius: 50px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 3em;
+  margin-bottom: 3em;
+  width: 15em;
+}
+
+.ExploreDetailsButtons button:focus {
+  background-color: #ff8e3c;
+  border: 1px solid black;
+  border-radius: 50px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 3em;
+  margin-bottom: 3em;
+  width: 15em;
+}
+
+.ExploreDetailsButtons button:hover {
+  background-color: #ff8e3c;
+  border: 1px solid black;
+  border-radius: 50px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  height: 3em;
+  margin-bottom: 3em;
+  width: 15em;
 }

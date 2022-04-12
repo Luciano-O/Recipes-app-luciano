@@ -1,7 +1,9 @@
 import React from 'react';
-import Card from '../Components/Card/Card';
-import getRecipes from './API';
-import { getProgress } from './localStorageSaves';
+import { useHistory } from 'react-router-dom';
+import CardComponent from '../../Components/Card/Card';
+import getRecipes from '../API';
+import styles from './styles.module.css';
+import { getProgress } from '../localStorageSaves';
 
 const MAX_LENGTH = 6;
 const MAGIC_NUMBER_32 = 32;
@@ -12,28 +14,35 @@ export function ingredientsAndMeasure(keyType, text) {
   ));
 }
 
-export function cardRecomendatioConstructor(arrRecommended, type) {
+export function CardRecomendatioConstructor(arrRecommended, type) {
+  const history = useHistory();
   let recomendations;
   if (type === 'Meal') {
     recomendations = arrRecommended.map((item, i3) => (
-      <Card
+      <CardComponent
         key={ i3 }
         datatestRecipeCard={ `${i3}-recomendation-card` }
         datatestCardImage={ `${i3}-recomendation-img` }
         datatestCardName={ `${i3}-recomendation-title` }
         title={ item.strDrink }
         thumb={ item.strDrinkThumb }
+        category={ item.strAlcoholic }
+        hidden={ false }
+        onClick={ () => history.push(`/drinks/${item.idDrink}`) }
       />
     ));
   } else {
     recomendations = arrRecommended.map((item, i3) => (
-      <Card
+      <CardComponent
         key={ i3 }
         datatestRecipeCard={ `${i3}-recomendation-card` }
         datatestCardImage={ `${i3}-recomendation-img` }
         datatestCardName={ `${i3}-recomendation-title` }
         title={ item.strMeal }
         thumb={ item.strMealThumb }
+        category={ item.strCategory }
+        hidden={ false }
+        onClick={ () => history.push(`/foods/${item.idMeal}`) }
       />
     ));
   } return recomendations;
@@ -41,29 +50,30 @@ export function cardRecomendatioConstructor(arrRecommended, type) {
 
 export function ingredientDivConstructor(ingredients, measure) {
   return ingredients.map(([key, value], i) => (
-    <div key={ key }>
-      <p
-        data-testid={ `${i}-ingredient-name-and-measure` }
-      >
-        {`${value} ${measure[i] && measure[i][1]}`}
-      </p>
-    </div>
+    <li
+      data-testid={ `${i}-ingredient-name-and-measure` }
+      key={ key }
+    >
+      {`${value} ${measure[i] && measure[i][1]}`}
+    </li>
   ));
 }
 
 export function videoDivConstructor(video) {
-  const videoEmbed = video.slice(MAGIC_NUMBER_32);
+  const videoEmbed = video?.slice(MAGIC_NUMBER_32);
   return (
     <>
       <h1>Video</h1>
-      <iframe
-        src={ `https://www.youtube.com/embed/${videoEmbed}` }
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        data-testid="video"
-      />
+      <div className={ styles.embed_container }>
+        <iframe
+          src={ `https://www.youtube.com/embed/${videoEmbed}` }
+          frameBorder="0"
+          allowFullScreen
+          title="YouTube video player"
+          data-testid="video"
+        />
+      </div>
+
       {/* <video
         controls
         src={ video }

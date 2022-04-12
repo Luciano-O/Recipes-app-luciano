@@ -1,3 +1,223 @@
-* {
+@media ( max-width : 480px ) {
+
+  .FavoritesPage {
+    background-color: #eff0f3;
+  }
+
+  .ButtonDiv {
+    display: flex;
+    margin-bottom: 1em;
+    margin-left: 1vw;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .ButtonDiv::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ButtonDiv button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 30px;
+    color: #0d0d0d;
+    font-family: Heebo , sans-serif;
+    font-weight: 400;
+    margin-right: 0.3em;
+    width: auto;
+  }
+
+  .CardButtons button {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .ButtonDiv button:active {
+    background-color: #ff8e3c;
+    box-shadow: none;
+    color: #0d0d0d;
+  }
+
+  .ButtonDiv button:focus {
+    background-color: #ff8e3c;
+    box-shadow: none;
+    color: #0d0d0d;
+  }
+
+  .ButtonDiv button:hover {
+    background-color: #ff8e3c;
+    box-shadow: none;
+    color: #0d0d0d;
+  }
+
+  .CardImgDiv img {
+    border-radius: 0.5em 0 0 0.5em;
+    height: 100%;
+    width: 100%;
+  }
+
+  .CardButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2em;
+    width: 100%;
+  }
+
+  .CardButtons img {
+    height: 2em;
+  }
+
+  .CardInfoDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    width: 50%;
+  }
+
+  .CardDiv {
+    background-color: white;
+    border: 0;
+    border-radius: 0.5em;
+    box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+    display: flex;
+    margin-bottom: 1.5em;
+    width: 95vw;
+  }
+
+  .CardImgDiv {
+    width: 50%;
+  }
+
+  .CardInfoDiv p {
+    font-family: Heebo , sans-serif;
+    margin: 0;
+  }
+
+  .CardInfoCategoryText {
+    font-weight: 200;
+  }
+
+  .CardInfoTitleText {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .CardsDiv {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+.FavoritesPage {
+  background-color: #eff0f3;
+}
+
+.ButtonDiv {
+  display: flex;
+  margin-bottom: 1em;
+  margin-left: 1vw;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: auto;
+}
+
+.ButtonDiv::-webkit-scrollbar {
+  display: none;
+}
+
+.ButtonDiv button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 30px;
+  color: #0d0d0d;
+  font-family: Heebo , sans-serif;
+  font-weight: 400;
+  margin-right: 0.3em;
+  width: auto;
+}
+
+.CardButtons button {
+  background-color: transparent;
+  border: 0;
+}
+
+.ButtonDiv button:active {
+  background-color: #ff8e3c;
+  box-shadow: none;
+  color: #0d0d0d;
+}
+
+.ButtonDiv button:focus {
+  background-color: #ff8e3c;
+  box-shadow: none;
+  color: #0d0d0d;
+}
+
+.ButtonDiv button:hover {
+  background-color: #ff8e3c;
+  box-shadow: none;
+  color: #0d0d0d;
+}
+
+.CardImgDiv img {
+  border-radius: 0.5em 0 0 0.5em;
+  height: 100%;
+  width: 100%;
+}
+
+.CardButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2em;
+  width: 100%;
+}
+
+.CardButtons img {
+  height: 2em;
+}
+
+.CardInfoDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  width: 50%;
+}
+
+.CardDiv {
+  background-color: white;
+  border: 0;
+  border-radius: 0.5em;
+  box-shadow: 0 15px 26px -12px rgba(30, 30, 60, 0.25);
+  display: flex;
+  margin-bottom: 1.5em;
+  width: 95vw;
+}
+
+.CardImgDiv {
+  width: 50%;
+}
+
+.CardInfoDiv p {
+  font-family: Heebo , sans-serif;
   margin: 0;
+}
+
+.CardInfoCategoryText {
+  font-weight: 200;
+}
+
+.CardInfoTitleText {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.CardsDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
