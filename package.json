@@ -14,6 +14,7 @@
     "bootstrap": "^4.5.3",
     "clipboard-copy": "^3.1.0",
     "eslint-plugin-sonarjs": "^0.11.0",
+    "gh-pages": "^3.2.3",
     "history": "^4.7.2",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
@@ -25,8 +26,11 @@
     "react-scripts": "5.0.0",
     "websocket-extensions": ">=0.1.4"
   },
+  "homepage": "https://Luciano-O.github.io/Recipes-app-luciano",
   "scripts": {
     "cy": "cypress run",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy:open": "cypress open",
     "start": "react-scripts start",
     "build": "react-scripts build",
