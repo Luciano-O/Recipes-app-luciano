@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Recipes-app-luciano/static/css/main.cda8dee2.css",
-    "main.js": "/Recipes-app-luciano/static/js/main.fa061ce7.js",
+    "main.js": "/Recipes-app-luciano/static/js/main.0fe78272.js",
     "static/media/exploreIcon.svg": "/Recipes-app-luciano/static/media/exploreIcon.7cbf9489ff7f6a05ac1079491d47a12f.svg",
     "static/media/mealIcon.svg": "/Recipes-app-luciano/static/media/mealIcon.93ccfec969f850b76b23d712c5364a37.svg",
     "static/media/shareIcon.svg": "/Recipes-app-luciano/static/media/shareIcon.0162aa71578ef591eb531dcb30801f1f.svg",
@@ -14,10 +14,10 @@
     "index.html": "/Recipes-app-luciano/index.html",
     "static/media/fish-fins-solid.svg": "/Recipes-app-luciano/static/media/fish-fins-solid.142021d6d92da6129245.svg",
     "main.cda8dee2.css.map": "/Recipes-app-luciano/static/css/main.cda8dee2.css.map",
-    "main.fa061ce7.js.map": "/Recipes-app-luciano/static/js/main.fa061ce7.js.map"
+    "main.0fe78272.js.map": "/Recipes-app-luciano/static/js/main.0fe78272.js.map"
   },
   "entrypoints": [
     "static/css/main.cda8dee2.css",
-    "static/js/main.fa061ce7.js"
+    "static/js/main.0fe78272.js"
   ]
 }
